@@ -1,0 +1,1 @@
+src/dronecan.remoteid.SecureCommand_res.c

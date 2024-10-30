@@ -1,0 +1,1 @@
+include/dronecan.remoteid.SecureCommand_req.h
