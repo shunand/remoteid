@@ -2,9 +2,12 @@
   CAN driver class for ESP32
  */
 #include <Arduino.h>
+#include "options.h"
+
+#if AP_DRONECAN_ENABLED
 #include "CANDriver.h"
 
-#include <esp32-hal.h>
+//#include <esp32-hal.h>
 #include <freertos/FreeRTOS.h>
 #include "freertos/task.h"
 #include "freertos/queue.h"
@@ -12,6 +15,7 @@
 #include "esp_err.h"
 #include "esp_log.h"
 #include "driver/twai.h"
+#include "board_config.h"
 
 #define CAN1_TX_IRQ_Handler      ESP32_CAN1_TX_HANDLER
 #define CAN1_RX0_IRQ_Handler     ESP32_CAN1_RX0_HANDLER
@@ -34,9 +38,8 @@ void CANDriver::init(uint32_t bitrate)
     init_bus(bitrate);
 }
 
-#define TX_GPIO_NUM           GPIO_NUM_47
-#define RX_GPIO_NUM           GPIO_NUM_38
-static const twai_general_config_t g_config =                      {.mode = TWAI_MODE_NORMAL, .tx_io = TX_GPIO_NUM, .rx_io = RX_GPIO_NUM,        \
+
+static const twai_general_config_t g_config =                      {.mode = TWAI_MODE_NORMAL, .tx_io = PIN_CAN_TX, .rx_io = PIN_CAN_RX,       \
                                                                     .clkout_io = TWAI_IO_UNUSED, .bus_off_io = TWAI_IO_UNUSED,      \
                                                                     .tx_queue_len = 5, .rx_queue_len = 5,                           \
                                                                     .alerts_enabled = TWAI_ALERT_NONE,  .clkout_divider = 0,        \
@@ -224,18 +227,17 @@ bool CANDriver::send(const CANFrame &frame)
     message.data_length_code = frame.dlc;
     memcpy(message.data, frame.data, 8);
 
-    esp_err_t sts = twai_transmit(&message, portMAX_DELAY);
-    ESP_ERROR_CHECK(sts);
+    const esp_err_t sts = twai_transmit(&message, pdMS_TO_TICKS(5));
 
     return (sts == ESP_OK);
 }
 
 bool CANDriver::receive(CANFrame &out_frame)
 {
-#define MAX_RECV_MSGS_PER_SEC 200
+
 
     twai_message_t message {};
-    esp_err_t recverr = twai_receive(&message, pdMS_TO_TICKS(1000/MAX_RECV_MSGS_PER_SEC));
+    esp_err_t recverr = twai_receive(&message, pdMS_TO_TICKS(5));
     if (recverr != ESP_OK) {
         return false;
     }
@@ -251,3 +253,4 @@ bool CANDriver::receive(CANFrame &out_frame)
     }
     return true;
 }
+#endif // AP_DRONECAN_ENABLED

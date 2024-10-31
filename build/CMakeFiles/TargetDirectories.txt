@@ -400,6 +400,7 @@
 /home/shun/esp/esp-idf/hello_world/build/esp-idf/bt/CMakeFiles/list_install_components.dir
 /home/shun/esp/esp-idf/hello_world/build/esp-idf/bt/CMakeFiles/rebuild_cache.dir
 /home/shun/esp/esp-idf/hello_world/build/esp-idf/bt/CMakeFiles/edit_cache.dir
+/home/shun/esp/esp-idf/hello_world/build/esp-idf/bt/CMakeFiles/__idf_bt.dir
 /home/shun/esp/esp-idf/hello_world/build/esp-idf/unity/CMakeFiles/install/strip.dir
 /home/shun/esp/esp-idf/hello_world/build/esp-idf/unity/CMakeFiles/install/local.dir
 /home/shun/esp/esp-idf/hello_world/build/esp-idf/unity/CMakeFiles/install.dir

@@ -57,28 +57,34 @@ public:
     const mavlink_open_drone_id_operator_id_t &get_operator_id(void) const {
         return operator_id;
     }
-
-    // return true when we have the key messages available
-    bool initialised(void);
     
+    uint32_t last_location_ms;
+    uint32_t last_basic_id_ms;
+    uint32_t last_self_id_ms;
+    uint32_t last_operator_id_ms;
+    uint32_t last_system_ms;
+
+  
+    uint32_t get_last_location_ms(void) {
+        return last_location_ms;
+    }
+
+    
+    void set_parse_fail(const char *msg) {
+        parse_fail = msg;
+    }
 private:
     HardwareSerial &serial;
     mavlink_channel_t chan;
     uint32_t last_hb_ms;
 
-    enum {
-        PKT_LOCATION       = (1U<<0),
-        PKT_BASIC_ID       = (1U<<1),
-        PKT_AUTHENTICATION = (1U<<2),
-        PKT_SELF_ID        = (1U<<3),
-        PKT_SYSTEM         = (1U<<4),
-        PKT_OPERATOR_ID    = (1U<<5),
-    };
+  
 
     void update_receive(void);
     void update_send(void);
     void process_packet(mavlink_status_t &status, mavlink_message_t &msg);
     void mav_printf(uint8_t severity, const char *fmt, ...);
+     void arm_status_send(void);
 
     mavlink_open_drone_id_location_t location;
     mavlink_open_drone_id_basic_id_t basic_id;
@@ -86,8 +92,6 @@ private:
     mavlink_open_drone_id_self_id_t self_id;
     mavlink_open_drone_id_system_t system;
     mavlink_open_drone_id_operator_id_t operator_id;
-
-    uint32_t last_system_msg_ms;
-
-    uint32_t packets_received_mask;
+  
+    const char *parse_fail;
 };

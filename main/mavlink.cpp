@@ -10,9 +10,9 @@ static HardwareSerial *serial_ports[MAVLINK_COMM_NUM_BUFFERS];
 
 #include <generated/mavlink_helpers.h>
 
-mavlink_system_t mavlink_system = {2,1};
+mavlink_system_t mavlink_system = {0,MAV_COMP_ID_ODID_TXRX_1};
 
-#define dev_printf(fmt, args ...)  do {Serial.printf(fmt, ## args); } while(0)
+
 
 /*
   send a buffer out a MAVLink channel
@@ -42,7 +42,9 @@ void MAVLinkSerial::init(void)
 
 void MAVLinkSerial::update(void)
 {
-    update_send();
+     if (mavlink_system.sysid != 0) {
+        update_send();
+    }
     update_receive();
 }
 
@@ -58,6 +60,9 @@ void MAVLinkSerial::update_send(void)
             0,
             0,
             0);
+
+         // send arming status
+        arm_status_send();
     }
 }
 
@@ -66,7 +71,7 @@ void MAVLinkSerial::update_receive(void)
     // receive new packets
     mavlink_message_t msg;
     mavlink_status_t status;
-    uint32_t now_ms = millis();
+ 
 
     status.packet_rx_drop_count = 0;
 
@@ -98,42 +103,67 @@ void MAVLinkSerial::mav_printf(uint8_t severity, const char *fmt, ...)
 
 void MAVLinkSerial::process_packet(mavlink_status_t &status, mavlink_message_t &msg)
 {
+     const uint32_t now_ms = millis();
     switch (msg.msgid) {
+      case MAVLINK_MSG_ID_HEARTBEAT: {
+        mavlink_heartbeat_t hb;
+        if (mavlink_system.sysid == 0) {
+            mavlink_msg_heartbeat_decode(&msg, &hb);
+            if (msg.sysid > 0 && hb.type != MAV_TYPE_GCS) {
+        
+                mavlink_system.sysid = msg.sysid;
+            }
+        }
+        break;
+    }
     case MAVLINK_MSG_ID_OPEN_DRONE_ID_LOCATION: {
-        dev_printf("Got OPEN_DRONE_ID_LOCATION\n");
+     
         mavlink_msg_open_drone_id_location_decode(&msg, &location);
-        packets_received_mask |= PKT_LOCATION;
+         last_location_ms = now_ms;
         break;
     }
     case MAVLINK_MSG_ID_OPEN_DRONE_ID_BASIC_ID: {
-        dev_printf("Got OPEN_DRONE_ID_BASIC_ID\n");
+     
         mavlink_msg_open_drone_id_basic_id_decode(&msg, &basic_id);
-        packets_received_mask |= PKT_BASIC_ID;
+          last_basic_id_ms = now_ms;
         break;
     }
     case MAVLINK_MSG_ID_OPEN_DRONE_ID_AUTHENTICATION: {
-        dev_printf("Got OPEN_DRONE_ID_AUTHENTICATION\n");
+      
         mavlink_msg_open_drone_id_authentication_decode(&msg, &authentication);
-        packets_received_mask |= PKT_AUTHENTICATION;
         break;
     }
     case MAVLINK_MSG_ID_OPEN_DRONE_ID_SELF_ID: {
-        dev_printf("Got OPEN_DRONE_ID_SELF_ID\n");
+       
         mavlink_msg_open_drone_id_self_id_decode(&msg, &self_id);
-        packets_received_mask |= PKT_SELF_ID;
+        last_self_id_ms = now_ms;
         break;
     }
     case MAVLINK_MSG_ID_OPEN_DRONE_ID_SYSTEM: {
-        dev_printf("Got OPEN_DRONE_ID_SYSTEM\n");
+       
         mavlink_msg_open_drone_id_system_decode(&msg, &system);
-        packets_received_mask |= PKT_SYSTEM;
-        last_system_msg_ms = millis();
+         last_system_ms = now_ms;
+        break;
+    }
+      case MAVLINK_MSG_ID_OPEN_DRONE_ID_SYSTEM_UPDATE: {
+       
+        mavlink_open_drone_id_system_update_t pkt_system_update;
+        mavlink_msg_open_drone_id_system_update_decode(&msg, &pkt_system_update);
+        system.operator_latitude = pkt_system_update.operator_latitude;
+        system.operator_longitude = pkt_system_update.operator_longitude;
+        system.operator_altitude_geo = pkt_system_update.operator_altitude_geo;
+        system.timestamp = pkt_system_update.timestamp;
+        if (last_system_ms != 0) {
+            // we can only mark system as updated if we have the other
+            // information already
+            last_system_ms = now_ms;
+        }
         break;
     }
     case MAVLINK_MSG_ID_OPEN_DRONE_ID_OPERATOR_ID: {
-        dev_printf("Got OPEN_DRONE_ID_OPERATOR_ID\n");
+       
         mavlink_msg_open_drone_id_operator_id_decode(&msg, &operator_id);
-        packets_received_mask |= PKT_OPERATOR_ID;
+        last_operator_id_ms = now_ms;
         break;
     }
     default:
@@ -142,11 +172,39 @@ void MAVLinkSerial::process_packet(mavlink_status_t &status, mavlink_message_t &
     }
 }
 
-/*
-  return true when we have the base set of packets
- */
-bool MAVLinkSerial::initialised(void)
+void MAVLinkSerial::arm_status_send(void)
 {
-    const uint32_t required = PKT_LOCATION | PKT_BASIC_ID | PKT_SELF_ID | PKT_SYSTEM | PKT_OPERATOR_ID;
-    return (packets_received_mask & required) == required;
+    const uint32_t max_age_location_ms = 3000;
+    const uint32_t max_age_other_ms = 22000;
+    const uint32_t now_ms = millis();
+    const char *reason = "";
+    uint8_t status = MAV_ODID_ARM_STATUS_PRE_ARM_FAIL_GENERIC;
+
+   if (last_location_ms == 0 || now_ms - last_location_ms > max_age_location_ms) {
+        reason = "missing location message";
+    } else if (last_basic_id_ms == 0 || now_ms - last_basic_id_ms > max_age_other_ms) {
+        reason = "missing basic_id message";
+    } else if (last_self_id_ms == 0  || now_ms - last_self_id_ms > max_age_other_ms) {
+        reason = "missing self_id message";
+    } else if (last_operator_id_ms == 0 || now_ms - last_operator_id_ms > max_age_other_ms) {
+        reason = "missing operator_id message";
+    } else if (last_system_ms == 0 || now_ms - last_system_ms > max_age_other_ms) {
+        reason = "missing system message";
+    } else if (location.latitude == 0 && location.longitude == 0) {
+        reason = "Bad location";
+    } else if (system.operator_latitude == 0 && system.operator_longitude == 0) {
+        reason = "Bad operator location";
+    } else if (parse_fail != nullptr) {
+        reason = parse_fail;
+    } else {
+        status = MAV_ODID_ARM_STATUS_GOOD_TO_ARM;
+    }
+
+    mavlink_msg_open_drone_id_arm_status_send(
+        chan,
+        status,
+        reason);
 }
+
+
+

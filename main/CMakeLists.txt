@@ -6,6 +6,8 @@ set(srcs-hello
     "mavlink.cpp"
     "CANDriver.cpp"
     "DroneCAN.cpp"
+    "WiFi_TX.cpp"
+    "BLE_TX.cpp"
  
 
 )

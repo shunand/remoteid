@@ -2,6 +2,7 @@
   DroneCAN class for handling OpenDroneID messages
  */
 #include <Arduino.h>
+#include "version.h"
 #include <time.h>
 #include "DroneCAN.h"
 #include "esp_mac.h"
@@ -15,14 +16,14 @@
 #include <dronecan.remoteid.SelfID.h>
 #include <dronecan.remoteid.System.h>
 #include <dronecan.remoteid.OperatorID.h>
+#include <dronecan.remoteid.ArmStatus.h>
 
 
-#define FW_VERSION_MAJOR 1
-#define FW_VERSION_MINOR 0
+
 #define BOARD_ID 10001
 #define CAN_APP_NODE_NAME "ArduPilot RemoteIDModule"
 #define CAN_DEFAULT_NODE_ID 0 // use DNA
-
+#define UNUSED(x) (void)(x)
 // constructor
 DroneCAN::DroneCAN()
 {}
@@ -53,6 +54,7 @@ void DroneCAN::update(void)
         if (now_ms - last_node_status_ms >= 1000) {
             last_node_status_ms = now_ms;
             node_status_send();
+            arm_status_send();
         }
     }
     processTx();
@@ -72,6 +74,50 @@ void DroneCAN::node_status_send(void)
     canardBroadcast(&canard,
                     UAVCAN_PROTOCOL_NODESTATUS_SIGNATURE,
                     UAVCAN_PROTOCOL_NODESTATUS_ID,
+                    &tx_id,
+                    CANARD_TRANSFER_PRIORITY_LOW,
+                    (void*)buffer,
+                    len);
+}
+void DroneCAN::arm_status_send(void)
+{
+    uint8_t buffer[DRONECAN_REMOTEID_ARMSTATUS_MAX_SIZE];
+    dronecan_remoteid_ArmStatus arm_status {};
+
+    const uint32_t max_age_location_ms = 3000;
+    const uint32_t max_age_other_ms = 22000;
+    const uint32_t now_ms = millis();
+    const char *reason = "";
+    arm_status.status = DRONECAN_REMOTEID_ARMSTATUS_ODID_ARM_STATUS_FAIL_GENERIC;
+     if (last_location_ms == 0 || now_ms - last_location_ms > max_age_location_ms) {
+        reason = "missing location message";
+    } else if (last_basic_id_ms == 0 || now_ms - last_basic_id_ms > max_age_other_ms) {
+        reason = "missing basic_id message";
+    } else if (last_self_id_ms == 0  || now_ms - last_self_id_ms > max_age_other_ms) {
+        reason = "missing self_id message";
+    } else if (last_operator_id_ms == 0 || now_ms - last_operator_id_ms > max_age_other_ms) {
+        reason = "missing operator_id message";
+    } else if (last_system_ms == 0 || now_ms - last_system_ms > max_age_other_ms) {
+        reason = "missing system message";
+    } else if (msg_Location.latitude == 0 && msg_Location.longitude == 0) {
+        reason = "Bad location";
+    } else if (msg_System.operator_latitude == 0 && msg_System.operator_longitude == 0) {
+        reason = "Bad operator location";
+    } else if (parse_fail != nullptr) {
+        reason = parse_fail;
+    } else {
+        arm_status.status = DRONECAN_REMOTEID_ARMSTATUS_ODID_ARM_STATUS_GOOD_TO_ARM;
+    }
+
+    arm_status.error.len = strlen(reason);
+    strncpy((char*)arm_status.error.data, reason, sizeof(arm_status.error.data));
+
+    const uint16_t len = dronecan_remoteid_ArmStatus_encode(&arm_status, buffer);
+
+    static uint8_t tx_id;
+    canardBroadcast(&canard,
+                    DRONECAN_REMOTEID_ARMSTATUS_SIGNATURE,
+                    DRONECAN_REMOTEID_ARMSTATUS_ID,
                     &tx_id,
                     CANARD_TRANSFER_PRIORITY_LOW,
                     (void*)buffer,
@@ -141,12 +187,15 @@ bool DroneCAN::shouldAcceptTransfer(const CanardInstance* ins,
         return true;
     }
 
+    #define ACCEPT_ID(name) case name ## _ID: *out_data_type_signature = name ## _SIGNATURE; return true
     switch (data_type_id) {
-    case UAVCAN_PROTOCOL_GETNODEINFO_ID:
-        *out_data_type_signature = UAVCAN_PROTOCOL_GETNODEINFO_SIGNATURE;
-        return true;
-    case UAVCAN_PROTOCOL_RESTARTNODE_ID:
-        *out_data_type_signature = UAVCAN_PROTOCOL_RESTARTNODE_SIGNATURE;
+         ACCEPT_ID(UAVCAN_PROTOCOL_GETNODEINFO);
+        ACCEPT_ID(UAVCAN_PROTOCOL_RESTARTNODE);
+        ACCEPT_ID(DRONECAN_REMOTEID_BASICID);
+        ACCEPT_ID(DRONECAN_REMOTEID_LOCATION);
+        ACCEPT_ID(DRONECAN_REMOTEID_SELFID);
+        ACCEPT_ID(DRONECAN_REMOTEID_OPERATORID);
+        ACCEPT_ID(DRONECAN_REMOTEID_SYSTEM);
         return true;
     }
     //Serial.printf("%u: reject ID 0x%x\n", millis(), data_type_id);
@@ -189,7 +238,7 @@ void DroneCAN::processTx(void)
             canardPopTxQueue(&canard);
             tx_fail_count = 0;
         } else {
-            Serial.printf("can send fail\n");
+      
             if (tx_fail_count < 8) {
                 tx_fail_count++;
             } else {
@@ -305,7 +354,7 @@ void DroneCAN::handle_get_node_info(CanardInstance* ins, CanardRxTransfer* trans
     pkt.software_version.major = FW_VERSION_MAJOR;
     pkt.software_version.minor = FW_VERSION_MINOR;
     pkt.software_version.optional_field_flags = UAVCAN_PROTOCOL_SOFTWAREVERSION_OPTIONAL_FIELD_FLAG_VCS_COMMIT | UAVCAN_PROTOCOL_SOFTWAREVERSION_OPTIONAL_FIELD_FLAG_IMAGE_CRC;
-    pkt.software_version.vcs_commit = 0;
+    pkt.software_version.vcs_commit = GIT_VERSION;
 
     readUniqueID(pkt.hardware_version.unique_id);
 
@@ -376,6 +425,7 @@ bool DroneCAN::do_DNA(void)
     last_DNA_start_ms = now;
 
     uint8_t node_id_allocation_transfer_id = 0;
+     UNUSED(node_id_allocation_transfer_id);
 
     send_next_node_id_allocation_request_at_ms =
         now + UAVCAN_PROTOCOL_DYNAMIC_NODE_ID_ALLOCATION_MIN_REQUEST_PERIOD_MS +
@@ -416,6 +466,8 @@ void DroneCAN::readUniqueID(uint8_t id[6])
 {
     esp_efuse_mac_get_default(id);
 }
+
+
 
 #if 0
 // xprintf is useful when debugging in C code such as libcanard
