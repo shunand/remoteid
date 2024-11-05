@@ -1,0 +1,32 @@
+[0;33m--- esp-idf-monitor 1.5.0 on /dev/ttyUSB0 115200[0m
+[0;33m--- Quit: Ctrl+] | Menu: Ctrl+T | Help: Ctrl+T followed by Ctrl+H[0m
+[0;33m--- 0x403808de: esp_restart_noos at /home/shun/esp/esp-idf/components/esp_system/port/soc/esp32c3/system_internal.c:108 (discriminator 1)
+[0m
+[0;33m--- Stack dump detected[0m
+[0;33m--- 0x40053af8: __udivdi3 in ROM
+0x42012c86: millis at /home/shun/esp/hello_world/build/../components/arduino-esp32-3.0.7/cores/esp32/esp32-hal-misc.c:201
+[0m
+[0;33m--- 0x4005890e: memset in ROM
+[0m
+[0;33m--- 0x4200ab1c: MAVLinkSerial::update() at /home/shun/esp/hello_world/build/../main/mavlink.cpp:50
+[0m
+[0;33m--- 0x4038dcfc: vPortClearInterruptMask at /home/shun/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/riscv/port.c:385
+0x4038dd26: vPortExitCritical at /home/shun/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/riscv/port.c:339
+[0m
+[0;33m--- 0x4005890e: memset in ROM
+[0m
+[0;33m--- 0x4038b9c8: xQueueGenericSend at /home/shun/esp/esp-idf/components/freertos/FreeRTOS-Kernel/queue.c:999
+[0m
+[0;33m--- 0x4038dcfc: vPortClearInterruptMask at /home/shun/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/riscv/port.c:385
+0x4038dd26: vPortExitCritical at /home/shun/esp/esp-idf/components/freertos/FreeRTOS-Kernel/portable/riscv/port.c:339
+[0m
+[0;33m--- 0x4005890e: memset in ROM
+[0m
+[0;33m--- 0x4038b9c8: xQueueGenericSend at /home/shun/esp/esp-idf/components/freertos/FreeRTOS-Kernel/queue.c:999
+[0m
+[0;33m--- 0x4038bf82: xQueueSemaphoreTake at /home/shun/esp/esp-idf/components/freertos/FreeRTOS-Kernel/queue.c:1653
+0x42013a84: uartAvailable at /home/shun/esp/hello_world/build/../components/arduino-esp32-3.0.7/cores/esp32/esp32-hal-uart.c:652 (discriminator 2)
+[0m
+[0;33m--- 0x4005890e: memset in ROM
+[0m
+[0m

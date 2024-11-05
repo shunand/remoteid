@@ -1,4 +1,4 @@
-/* * Data converted from /home/shun/esp/esp-idf/hello_world/managed_components/espressif__esp_insights/server_certs/https_server.crt
+/* * Data converted from /home/shun/esp/hello_world/managed_components/espressif__esp_insights/server_certs/https_server.crt
  * (null byte appended)
  */
 .data

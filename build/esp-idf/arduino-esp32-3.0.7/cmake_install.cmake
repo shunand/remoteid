@@ -1,4 +1,4 @@
-# Install script for directory: /home/shun/esp/esp-idf/hello_world/components/arduino-esp32-3.0.7
+# Install script for directory: /home/shun/esp/hello_world/components/arduino-esp32-3.0.7
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

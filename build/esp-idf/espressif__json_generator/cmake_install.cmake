@@ -1,4 +1,4 @@
-# Install script for directory: /home/shun/esp/esp-idf/hello_world/managed_components/espressif__json_generator
+# Install script for directory: /home/shun/esp/hello_world/managed_components/espressif__json_generator
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

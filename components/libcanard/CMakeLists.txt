@@ -1,7 +1,7 @@
 
 
 set(srcs-libcanard
-    "."
+    "canard.c"
     "drivers/stm32"
     "drivers/socketcan"
     "drivers/nuttx"

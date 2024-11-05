@@ -11,7 +11,7 @@ file(REMOVE_RECURSE
   "ldgen_libraries"
   "ldgen_libraries.in"
   "littlefs_py_venv"
-  "project_elf_src_esp32s3.c"
+  "project_elf_src_esp32c3.c"
   "rmaker_claim_service_server.crt.S"
   "rmaker_mqtt_server.crt.S"
   "rmaker_ota_server.crt.S"

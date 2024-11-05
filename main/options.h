@@ -2,17 +2,9 @@
   control optional behaviour in the firmware at build time
  */
 #pragma once
-#define BOARD_ESP32S3_DEV
+#define BOARD_ESP32C3_DEV
 #include "board_config.h"
-// enable WiFi NAN support
-#define AP_WIFI_NAN_ENABLED 1
 
-// enable bluetooth 4 and 5 support
-#define AP_BLE_ENABLED 1
-
-// start sending packets as soon we we power up,
-// not waiting for location data from flight controller
-#define AP_BROADCAST_ON_POWER_UP 1
 
 // do we support DroneCAN connnection to flight controller?
 #define AP_DRONECAN_ENABLED  defined(PIN_CAN_TX) && defined(PIN_CAN_RX)

@@ -1,5 +1,13 @@
 {
     "files.associations": {
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "esp_attr.h": "c",
+        "charconv": "cpp",
+        "string.h": "c",
+        "esp_log.h": "c",
+        "esp_secure_cert_tlv_private.h": "c",
+        "memory_resource": "cpp",
+        "bitset": "cpp",
+        "set": "cpp"
     }
 }

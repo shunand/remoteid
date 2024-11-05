@@ -7,7 +7,6 @@
 #if AP_DRONECAN_ENABLED
 #include "CANDriver.h"
 
-//#include <esp32-hal.h>
 #include <freertos/FreeRTOS.h>
 #include "freertos/task.h"
 #include "freertos/queue.h"
@@ -43,7 +42,8 @@ static const twai_general_config_t g_config =                      {.mode = TWAI
                                                                     .clkout_io = TWAI_IO_UNUSED, .bus_off_io = TWAI_IO_UNUSED,      \
                                                                     .tx_queue_len = 5, .rx_queue_len = 5,                           \
                                                                     .alerts_enabled = TWAI_ALERT_NONE,  .clkout_divider = 0,        \
-                                                                    .intr_flags = ESP_INTR_FLAG_LEVEL2};
+                                                                    .intr_flags = ESP_INTR_FLAG_LEVEL2
+                                                                    };
 
 static const twai_timing_config_t t_config = TWAI_TIMING_CONFIG_1MBITS();
 static const twai_filter_config_t f_config = TWAI_FILTER_CONFIG_ACCEPT_ALL();
@@ -227,7 +227,28 @@ bool CANDriver::send(const CANFrame &frame)
     message.data_length_code = frame.dlc;
     memcpy(message.data, frame.data, 8);
 
+    twai_status_info_t info {};
+    twai_get_status_info(&info);
+    switch (info.state) {
+    case TWAI_STATE_STOPPED:
+        twai_start();
+        break;
+    case TWAI_STATE_RUNNING:
+    case TWAI_STATE_RECOVERING:
+        break;
+    case TWAI_STATE_BUS_OFF: {
+        uint32_t now = millis();
+        if (now - last_bus_recovery_ms > 2000) {
+            last_bus_recovery_ms = now;
+            twai_initiate_recovery();
+        }
+        break;
+    }
+    }
     const esp_err_t sts = twai_transmit(&message, pdMS_TO_TICKS(5));
+      if (sts == ESP_OK) {
+        last_bus_recovery_ms = 0;
+    }
 
     return (sts == ESP_OK);
 }

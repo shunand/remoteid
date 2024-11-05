@@ -1,4 +1,4 @@
-/* * Data converted from /home/shun/esp/esp-idf/hello_world/managed_components/espressif__esp_rainmaker/server_certs/rmaker_ota_server.crt
+/* * Data converted from /home/shun/esp/hello_world/managed_components/espressif__esp_rainmaker/server_certs/rmaker_ota_server.crt
  * (null byte appended)
  */
 .data

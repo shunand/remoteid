@@ -3,18 +3,20 @@
  */
 #pragma once
 
-#include <Arduino.h>
-#include <opendroneid.h>
+#include "transmitter.h"
 
-class BLE_TX {
+class BLE_TX : public Transmitter {
 public:
-    bool init(void);
-    bool transmit(ODID_UAS_Data &UAS_data);
+    bool init(void) override;
+    bool transmit_longrange(ODID_UAS_Data &UAS_data);
+    bool transmit_legacy(ODID_UAS_Data &UAS_data);
 
 private:
-    int msg_counter;
-    uint8_t payload[250];
-    uint8_t payload2[255];
+    bool initialised;
+    uint8_t msg_counters[ODID_MSG_COUNTER_AMOUNT];
     uint8_t legacy_payload[36];
+    uint8_t longrange_payload[250];
     bool started;
+
+    uint8_t dBm_to_tx_power(float dBm) const;
 };

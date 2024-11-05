@@ -1,7 +1,8 @@
 
 
 set(srcs-openid
-    "."
+    "opendroneid.c"
+    "wifi.c"
 
 )
 set(include_dirs

@@ -1,4 +1,4 @@
-# Install script for directory: /home/shun/esp/esp-idf/hello_world/managed_components/chmorgan__esp-libhelix-mp3
+# Install script for directory: /home/shun/esp/hello_world/managed_components/chmorgan__esp-libhelix-mp3
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

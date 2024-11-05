@@ -1,0 +1,1205 @@
+ESP-ROM:esp32c3-api1-20210207
+Build:Feb  7 2021
+rst:0x1 (POWERON),boot:0xc (SPI_FAST_FLASH_BOOT)
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fcd5820,len:0x1704
+load:0x403cc710,len:0x968
+load:0x403ce710,len:0x2f9c
+entry 0x403cc710
+[0;32mI (30) boot: ESP-IDF v5.1.4 2nd stage bootloader[0m
+[0;32mI (30) boot: compile time Nov  5 2024 09:09:32[0m
+[0;32mI (30) boot: chip revision: v0.3[0m
+[0;32mI (33) boot.esp32c3: SPI Speed      : 80MHz[0m
+[0;32mI (38) boot.esp32c3: SPI Mode       : DIO[0m
+[0;32mI (43) boot.esp32c3: SPI Flash Size : 4MB[0m
+[0;32mI (47) boot: Enabling RNG early entropy source...[0m
+[0;32mI (53) boot: Partition Table:[0m
+[0;32mI (56) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (64) boot:  0 nvs              WiFi data        01 02 00009000 00005000[0m
+[0;32mI (71) boot:  1 otadata          OTA data         01 00 0000e000 00002000[0m
+[0;32mI (79) boot:  2 app0             OTA app          00 10 00010000 001f0000[0m
+[0;32mI (86) boot:  3 app1             OTA app          00 11 00200000 001f0000[0m
+[0;32mI (94) boot:  4 param            unknown          46 00 003f0000 00004000[0m
+[0;32mI (101) boot: End of partition table[0m
+[0;32mI (105) esp_image: segment 0: paddr=00010020 vaddr=3c140020 size=5e3a0h (385952) map[0m
+[0;32mI (177) esp_image: segment 1: paddr=0006e3c8 vaddr=3fc97000 size=01c50h (  7248) load[0m
+[0;32mI (178) esp_image: segment 2: paddr=00070020 vaddr=42000020 size=132238h (1253944) map[0m
+[0;32mI (386) esp_image: segment 3: paddr=001a2260 vaddr=3fc98c50 size=01884h (  6276) load[0m
+[0;32mI (388) esp_image: segment 4: paddr=001a3aec vaddr=40380000 size=16e94h ( 93844) load[0m
+[0;32mI (417) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (417) boot: Disabling RNG early entropy source...[0m
+[0;32mI (429) cpu_start: Unicore app[0m
+[0;32mI (429) cpu_start: Pro cpu up.[0m
+[0;32mI (437) cpu_start: Pro cpu start user code[0m
+[0;32mI (437) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (437) cpu_start: Application information:[0m
+[0;32mI (440) cpu_start: Project name:     hello_world[0m
+[0;32mI (446) cpu_start: App version:      fb1bf7b-dirty[0m
+[0;32mI (451) cpu_start: Compile time:     Nov  5 2024 09:09:26[0m
+[0;32mI (457) cpu_start: ELF file SHA256:  d41975e1be5e325e...[0m
+[0;32mI (463) cpu_start: ESP-IDF:          v5.1.4[0m
+[0;32mI (468) cpu_start: Min chip rev:     v0.3[0m
+[0;32mI (473) cpu_start: Max chip rev:     v1.99 [0m
+[0;32mI (478) cpu_start: Chip rev:         v0.3[0m
+[0;32mI (482) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (490) heap_init: At 3FCA48A0 len 0001B760 (109 KiB): DRAM[0m
+[0;32mI (496) heap_init: At 3FCC0000 len 0001C710 (113 KiB): DRAM/RETENTION[0m
+[0;32mI (503) heap_init: At 3FCDC710 len 00002950 (10 KiB): DRAM/RETENTION/STACK[0m
+[0;32mI (510) heap_init: At 50000010 len 00001FD8 (7 KiB): RTCRAM[0m
+[0;32mI (518) spi_flash: detected chip: generic[0m
+[0;32mI (521) spi_flash: flash io: dio[0m
+[0;32mI (526) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (532) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (539) coexist: coex firmware version: d96c1e51f[0m
+[0;32mI (545) coexist: coexist rom version 9387209[0m
+[0;32mI (550) app_start: Starting scheduler on CPU0[0m
+[0;32mI (555) main_task: Started on CPU0[0m
+[0;32mI (559) main_task: Calling app_main()[0m
+I BOD: Brownout detector was triggered
+
+
+ESP-ROM:esp32c3-api1-20210207
+Build:Feb  7 2021
+rst:0xc (RTC_SW_CPU_RST),boot:0xc (SPI_FAST_FLASH_BOOT)
+Saved PC:0x403808de
+SPIWP:0xee
+mode:DIO, clock div:1
+load:0x3fcd5820,len:0x1704
+load:0x403cc710,len:0x968
+load:0x403ce710,len:0x2f9c
+entry 0x403cc710
+[0;32mI (35) boot: ESP-IDF v5.1.4 2nd stage bootloader[0m
+[0;32mI (35) boot: compile time Nov  5 2024 09:09:32[0m
+[0;32mI (35) boot: chip revision: v0.3[0m
+[0;32mI (38) boot.esp32c3: SPI Speed      : 80MHz[0m
+[0;32mI (43) boot.esp32c3: SPI Mode       : DIO[0m
+[0;32mI (48) boot.esp32c3: SPI Flash Size : 4MB[0m
+[0;32mI (52) boot: Enabling RNG early entropy source...[0m
+[0;32mI (58) boot: Partition Table:[0m
+[0;32mI (61) boot: ## Label            Usage          Type ST Offset   Length[0m
+[0;32mI (69) boot:  0 nvs              WiFi data        01 02 00009000 00005000[0m
+[0;32mI (76) boot:  1 otadata          OTA data         01 00 0000e000 00002000[0m
+[0;32mI (83) boot:  2 app0             OTA app          00 10 00010000 001f0000[0m
+[0;32mI (91) boot:  3 app1             OTA app          00 11 00200000 001f0000[0m
+[0;32mI (98) boot:  4 param            unknown          46 00 003f0000 00004000[0m
+[0;32mI (106) boot: End of partition table[0m
+[0;32mI (110) esp_image: segment 0: paddr=00010020 vaddr=3c140020 size=5e3a0h (385952) map[0m
+[0;32mI (181) esp_image: segment 1: paddr=0006e3c8 vaddr=3fc97000 size=01c50h (  7248) load[0m
+[0;32mI (183) esp_image: segment 2: paddr=00070020 vaddr=42000020 size=132238h (1253944) map[0m
+[0;32mI (391) esp_image: segment 3: paddr=001a2260 vaddr=3fc98c50 size=01884h (  6276) load[0m
+[0;32mI (392) esp_image: segment 4: paddr=001a3aec vaddr=40380000 size=16e94h ( 93844) load[0m
+[0;32mI (422) boot: Loaded app from partition at offset 0x10000[0m
+[0;32mI (422) boot: Disabling RNG early entropy source...[0m
+[0;32mI (433) cpu_start: Unicore app[0m
+[0;32mI (434) cpu_start: Pro cpu up.[0m
+[0;32mI (442) cpu_start: Pro cpu start user code[0m
+[0;32mI (442) cpu_start: cpu freq: 160000000 Hz[0m
+[0;32mI (442) cpu_start: Application information:[0m
+[0;32mI (445) cpu_start: Project name:     hello_world[0m
+[0;32mI (451) cpu_start: App version:      fb1bf7b-dirty[0m
+[0;32mI (456) cpu_start: Compile time:     Nov  5 2024 09:09:26[0m
+[0;32mI (462) cpu_start: ELF file SHA256:  d41975e1be5e325e...[0m
+[0;32mI (468) cpu_start: ESP-IDF:          v5.1.4[0m
+[0;32mI (473) cpu_start: Min chip rev:     v0.3[0m
+[0;32mI (478) cpu_start: Max chip rev:     v1.99 [0m
+[0;32mI (482) cpu_start: Chip rev:         v0.3[0m
+[0;32mI (487) heap_init: Initializing. RAM available for dynamic allocation:[0m
+[0;32mI (494) heap_init: At 3FCA48A0 len 0001B760 (109 KiB): DRAM[0m
+[0;32mI (501) heap_init: At 3FCC0000 len 0001C710 (113 KiB): DRAM/RETENTION[0m
+[0;32mI (508) heap_init: At 3FCDC710 len 00002950 (10 KiB): DRAM/RETENTION/STACK[0m
+[0;32mI (515) heap_init: At 50000010 len 00001FD8 (7 KiB): RTCRAM[0m
+[0;32mI (522) spi_flash: detected chip: generic[0m
+[0;32mI (526) spi_flash: flash io: dio[0m
+[0;32mI (531) sleep: Configure to isolate all GPIO pins in sleep state[0m
+[0;32mI (537) sleep: Enable automatic switching of GPIO sleep configuration[0m
+[0;32mI (544) coexist: coex firmware version: d96c1e51f[0m
+[0;32mI (550) coexist: coexist rom version 9387209[0m
+[0;32mI (555) app_start: Starting scheduler on CPU0[0m
+[0;32mI (559) main_task: Started on CPU0[0m
+[0;32mI (563) main_task: Calling app_main()[0m
+[0;32mI (576) gpio: GPIO[8]| InputEn: 1| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (577) gpio: GPIO[8]| InputEn: 1| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (586) gpio: GPIO[8]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 1| Pulldown: 0| Intr:0 [0m
+[0;32mI (596) pp: pp rom version: 9387209[0m
+[0;32mI (599) net80211: net80211 rom version: 9387209[0m
+[0;32mI (605) wifi:wifi driver task: 3fcaf20c, prio:23, stack:6656, core=0[0m
+[0;32mI (613) wifi:wifi firmware version: 3ce09e5[0m
+[0;32mI (614) wifi:wifi certification version: v7.0[0m
+[0;32mI (618) wifi:config NVS flash: enabled[0m
+[0;32mI (621) wifi:config nano formating: disabled[0m
+[0;32mI (626) wifi:Init data frame dynamic rx buffer num: 32[0m
+[0;32mI (630) wifi:Init static rx mgmt buffer num: 5[0m
+[0;32mI (634) wifi:Init management short buffer num: 32[0m
+[0;32mI (639) wifi:Init dynamic tx buffer num: 32[0m
+[0;32mI (643) wifi:Init static tx FG buffer num: 2[0m
+[0;32mI (647) wifi:Init static rx buffer size: 1600[0m
+[0;32mI (651) wifi:Init static rx buffer num: 4[0m
+[0;32mI (655) wifi:Init dynamic rx buffer num: 32[0m
+[0;32mI (659) wifi_init: rx ba win: 6[0m
+[0;32mI (662) wifi_init: tcpip mbox: 32[0m
+[0;32mI (666) wifi_init: udp mbox: 6[0m
+[0;32mI (670) wifi_init: tcp mbox: 6[0m
+[0;32mI (674) wifi_init: tcp tx win: 5760[0m
+[0;32mI (678) wifi_init: tcp rx win: 5760[0m
+[0;32mI (682) wifi_init: tcp mss: 1440[0m
+[0;32mI (686) wifi_init: WiFi IRAM OP enabled[0m
+[0;32mI (691) wifi_init: WiFi RX IRAM OP enabled[0m
+[0;32mI (697) phy_init: phy_version 1170,f4aea9b,Apr 30 2024,10:49:24[0m
+[0;32mI (735) wifi:mode : softAP (b6:22:4f:23:fd:92)[0m
+[0;32mI (738) wifi:Total power save buffer number: 16[0m
+[0;32mI (738) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (739) wifi:Init max length of beacon: 752/752[0m
+[0;32mI (743) esp_netif_l��[0;32mI (755) uart: queue free spaces: 20[0m
+ArduRemoteID version 1.14 08d62e32
+[0;32mI (756) gpio: GPIO[4]| InputEn: 1| OutputEn: 0| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+[0;32mI (761) gpio: GPIO[5]| InputEn: 0| OutputEn: 1| OpenDrain: 0| Pullup: 0| Pulldown: 0| Intr:0 [0m
+CAN/TWAI Driver installed
+CAN/TWAI Alerts reconfigured
+CAN/TWAI Driver started
+DIS_DOWNLOAD_MODE = 0
+DIS_USB_JTAG = 0
+DIS_USB_DOWNLOAD_MODE = 0
+DIS_LEGACY_SPI_BOOT = 0
+Checking partition app0
+app_descriptor not found
+WAP start RID_58cf79e21578 ArduRemoteID
+WAP started
+[   986][E][BLEAdvertising.cpp:607] setAdvertisingData(): set advertising data err: 259
+[   996][E][BLEAdvertising.cpp:654] start(): start extended advertising err: 259
+[0;32mI (1009) BLE_INIT: BT controller compile version [30b57c4][0m
+[0;32mI (1010) BLE_INIT: Bluetooth MAC: b6:22:4f:23:fd:93
+[0m
+[0;31mE (1231) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (2015) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (3017) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (4019) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (5021) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (6022) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (7028) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (8032) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (9038) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (10044) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (11051) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (12057) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (13063) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (14069) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (15075) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (16081) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (17087) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (18093) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (19099) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (20105) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (21111) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (22117) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (23123) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (24129) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (25135) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (26141) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (27148) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (28154) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (29160) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (30166) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (31172) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (32178) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (33184) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (34190) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (35196) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (36202) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (37208) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (38214) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (39220) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (40226) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (41232) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (42238) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (43244) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (44251) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (45257) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (46263) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (47269) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (48275) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (49281) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (50288) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (51294) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (52300) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (53306) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (54312) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (55318) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (56324) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (57330) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (58336) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (59342) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (60348) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (61354) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (62360) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (63366) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (64372) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (65378) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (66384) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (67391) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (68397) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (69403) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (70409) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (71415) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (72421) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (73427) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (74433) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (75439) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (76445) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (77451) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (78457) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (79463) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (80469) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (81475) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (82481) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (83487) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (84493) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (85499) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (86505) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (87511) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (88517) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (89523) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (90530) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (91536) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (92543) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (93549) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (94555) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (95561) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (96567) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (97573) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (98579) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (99585) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (100591) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (101597) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (102603) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (103609) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (104615) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (105621) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (106627) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (107634) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (108640) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (109646) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (110652) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (111658) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (112664) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (113670) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (114676) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (115682) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (116688) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (117694) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (118700) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (119706) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (120712) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (121718) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (122724) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (123730) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (124736) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (125742) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (126749) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (127755) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (128761) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (129767) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (130774) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (131780) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (132786) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (133792) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (134798) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (135804) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (136810) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (137816) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (138822) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (139828) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (140834) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (141840) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (142846) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (143852) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (144858) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (145864) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (146870) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (147876) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (148882) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (149888) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (150894) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (151900) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (152906) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (153912) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (154918) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (155924) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (156930) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (157936) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (158942) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (159948) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (160954) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (161960) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (162966) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (163972) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (164978) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (165984) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (166990) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (167996) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (169002) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (170008) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (171014) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (172020) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (173026) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (174032) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (175038) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (176044) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (177050) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (178056) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (179062) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (180068) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (181074) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (182080) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (183086) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (184092) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (185098) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (186104) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (187110) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (188117) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (189123) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (190129) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (191135) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (192141) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (193147) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (194153) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (195159) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (196165) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (197171) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (198177) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (199183) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (200189) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (201195) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (202201) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (203207) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (204213) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (205220) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (206226) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (207232) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (208238) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (209244) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (210250) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (211256) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (212262) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (213268) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (214274) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (215280) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (216286) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (217292) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (218298) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (219304) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (220310) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (221316) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (222322) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (223328) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (224334) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (225340) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (226346) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (227352) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (228358) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (229364) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (230370) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (231376) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (232382) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (233388) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (234394) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (235400) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (236406) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (237412) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (238418) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (239424) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (240430) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (241436) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (242442) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (243448) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (244454) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (245461) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (246467) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (247473) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (248479) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (249485) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (250491) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (251497) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (252503) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (253509) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (254515) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (255521) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (256528) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (257534) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (258540) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (259546) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (260552) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (261558) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (262564) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (263570) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (264576) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (265582) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (266588) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (267594) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (268600) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (269607) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (270613) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (271619) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (272625) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (273631) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (274637) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (275643) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (276649) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (277655) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (278661) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (279667) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (280673) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (281679) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (282685) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (283691) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (284697) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (285703) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (286709) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (287715) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (288721) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (289727) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (290733) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (291739) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (292745) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (293751) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (294757) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (295763) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (296770) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (297776) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (298782) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (299788) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (300794) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (301800) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (302807) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (303813) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (304819) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (305825) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (306831) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (307837) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (308843) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (309849) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (310855) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (311861) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (312867) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (313873) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (314879) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (315885) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (316891) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (317897) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (318903) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (319909) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (320915) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (321921) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (322927) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (323933) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (324939) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (325945) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (326951) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (327957) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (328963) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (329969) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (330975) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (331981) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (332987) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (333993) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (334999) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (336005) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (337012) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (338018) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (339024) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (340030) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (341036) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (342042) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (343049) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (344055) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (345061) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (346067) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (347073) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (348079) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (349085) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (350091) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (351097) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (352103) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (353109) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (354115) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (355121) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (356127) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (357133) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (358139) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (359145) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (360152) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (361158) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (362164) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (363170) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (364176) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (365182) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (366188) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (367194) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (368200) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (369206) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (370212) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (371218) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (372224) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (373230) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (374236) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (375242) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (376248) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (377254) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (378260) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (379266) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (380272) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (381278) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (382284) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (383290) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (384296) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (385302) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (386308) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (387314) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (388320) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (389326) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (390332) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (391338) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (392344) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (393350) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (394357) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (395363) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (396369) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (397375) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (398381) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (399387) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (400393) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (401399) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (402405) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (403411) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (404417) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (405423) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (406429) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (407435) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (408441) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (409447) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (410453) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (411459) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (412465) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (413471) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (414477) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (415483) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (416489) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (417496) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (418502) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (419508) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (420514) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (421520) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (422526) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (423532) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (424538) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (425544) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (426550) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (427556) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (428562) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (429568) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (430574) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (431580) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (432586) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (433592) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (434598) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (435604) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (436610) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (437616) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (438622) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (439628) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (440635) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (441641) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (442647) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (443653) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (444659) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (445665) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (446671) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (447677) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (448683) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (449689) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (450695) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (451701) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (452707) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (453713) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (454719) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (455725) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (456731) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (457738) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (458744) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (459751) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (460757) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (461763) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (462769) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (463775) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (464781) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (465787) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (466793) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (467799) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (468805) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (469811) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (470817) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (471823) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (472829) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (473835) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (474842) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (475848) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (476854) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (477860) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (478866) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (479872) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (480879) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (481885) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (482891) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (483897) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (484903) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (485909) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (486915) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (487921) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (488927) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (489933) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (490939) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (491945) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (492951) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (493957) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (494963) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (495969) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (496975) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (497982) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (498988) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (499994) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (501000) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (502006) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (503012) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (504018) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (505024) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (506030) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (507036) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (508042) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (509048) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (510054) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (511060) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (512066) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (513072) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (514078) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (515084) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (516090) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (517096) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (518102) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (519108) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (520114) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (521120) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (522126) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (523132) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (524138) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (525144) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (526150) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (527156) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (528162) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (529168) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (530174) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (531180) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (532187) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (533193) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (534199) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (535205) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (536211) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (537217) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (538223) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (539229) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (540235) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (541241) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (542247) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (543253) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (544259) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (545265) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (546271) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (547277) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (548283) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (549289) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (550295) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (551301) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (552307) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (553313) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (554319) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (555326) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (556332) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (557338) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (558344) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (559350) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (560355) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (561361) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (562367) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (563374) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (564380) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (565386) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (566392) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (567398) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (568404) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (569410) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (570416) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (571422) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (572429) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (573435) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (574441) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (575447) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (576453) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (577459) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (578466) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (579472) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (580478) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (581484) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (582490) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (583496) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (584502) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (585508) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (586514) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (587520) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (588526) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (589533) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (590539) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (591545) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (592551) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (593557) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (594563) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (595570) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (596576) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (597582) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (598588) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (599594) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (600600) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (601606) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (602612) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (603618) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (604624) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (605630) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (606636) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (607642) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (608648) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (609654) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (610660) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (611666) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (612672) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (613678) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (614684) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (615690) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (616696) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (617702) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (618709) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (619715) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (620721) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (621727) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (622733) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (623739) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (624745) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (625751) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (626757) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (627763) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (628769) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (629775) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (630781) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (631787) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (632793) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (633799) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (634805) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (635812) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (636818) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (637824) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (638830) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (639836) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (640842) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (641848) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (642854) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (643860) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (644866) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (645872) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (646878) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (647884) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (648890) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (649896) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (650902) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (651908) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (652914) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (653920) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (654926) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (655932) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (656938) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (657944) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (658950) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (659956) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (660962) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (661968) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (662974) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (663980) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (664986) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (665992) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (666998) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (668004) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (669010) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (670017) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (671023) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (672029) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (673035) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (674041) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (675047) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (676053) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (677059) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (678065) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (679071) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (680077) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (681083) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (682089) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (683095) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (684101) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (685107) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (686113) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (687119) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (688125) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (689131) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (690137) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+[0;31mE (691143) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m
+Waiting for heartbeat
+[0;31mE (692149) BT_BTM: LE EA SetAdvData: cmd err=0x12[0m

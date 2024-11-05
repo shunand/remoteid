@@ -1,1 +1,1 @@
-#define GIT_VERSION 0
+#define GIT_VERSION 0x8d62e32

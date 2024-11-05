@@ -131,7 +131,7 @@ void odid_initMessagePackData(ODID_MessagePack_data *data)
 
 void odid_initUasData(ODID_UAS_Data *data)
 {
-    if (!data)
+    if (!data) //空指针检查
         return;
     for (int i = 0; i < ODID_BASIC_ID_MAX_MESSAGES; i++) {
         data->BasicIDValid[i] = 0;
@@ -1407,7 +1407,7 @@ void printAuth_data(ODID_Auth_data *Auth)
     if (Auth->DataPage == 0) {
         const char ODID_Auth_data_format[] =
             "AuthType: %d\nDataPage: %d\nLastPageIndex: %d\nLength: %d\n"\
-            "Timestamp: %u\nAuthData: ";
+            "Timestamp: %lu\nAuthData: ";
         printf(ODID_Auth_data_format, Auth->AuthType, Auth->DataPage,
                Auth->LastPageIndex, Auth->Length, Auth->Timestamp);
         for (int i = 0; i < ODID_AUTH_PAGE_ZERO_DATA_SIZE; i++)
@@ -1447,7 +1447,7 @@ void printSystem_data(ODID_System_data *System_data)
     const char ODID_System_data_format[] = "Operator Location Type: %d\n"
         "Classification Type: %d\nLat/Lon: %.7f, %.7f\n"
         "Area Count, Radius, Ceiling, Floor: %d, %d, %.2f, %.2f\n"
-        "Category EU: %d, Class EU: %d, Altitude: %.2f, Timestamp: %u\n";
+        "Category EU: %d, Class EU: %d, Altitude: %.2f, Timestamp: %lu\n";
     printf(ODID_System_data_format, System_data->OperatorLocationType,
         System_data->ClassificationType,
         System_data->OperatorLatitude, System_data->OperatorLongitude,

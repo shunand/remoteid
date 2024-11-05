@@ -1,4 +1,4 @@
-set(CMAKE_CXX_COMPILER "/home/shun/.espressif/tools/xtensa-esp32s3-elf/esp-12.2.0_20230208/xtensa-esp32s3-elf/bin/xtensa-esp32s3-elf-g++")
+set(CMAKE_CXX_COMPILER "/home/shun/.espressif/tools/riscv32-esp-elf/esp-12.2.0_20230208/riscv32-esp-elf/bin/riscv32-esp-elf-g++")
 set(CMAKE_CXX_COMPILER_ARG1 "")
 set(CMAKE_CXX_COMPILER_ID "GNU")
 set(CMAKE_CXX_COMPILER_VERSION "12.2.0")
@@ -19,11 +19,11 @@ set(CMAKE_CXX_SIMULATE_VERSION "")
 
 
 
-set(CMAKE_AR "/home/shun/.espressif/tools/xtensa-esp32s3-elf/esp-12.2.0_20230208/xtensa-esp32s3-elf/bin/xtensa-esp32s3-elf-ar")
-set(CMAKE_CXX_COMPILER_AR "/home/shun/.espressif/tools/xtensa-esp32s3-elf/esp-12.2.0_20230208/xtensa-esp32s3-elf/bin/xtensa-esp32s3-elf-gcc-ar")
-set(CMAKE_RANLIB "/home/shun/.espressif/tools/xtensa-esp32s3-elf/esp-12.2.0_20230208/xtensa-esp32s3-elf/bin/xtensa-esp32s3-elf-ranlib")
-set(CMAKE_CXX_COMPILER_RANLIB "/home/shun/.espressif/tools/xtensa-esp32s3-elf/esp-12.2.0_20230208/xtensa-esp32s3-elf/bin/xtensa-esp32s3-elf-gcc-ranlib")
-set(CMAKE_LINKER "/home/shun/.espressif/tools/xtensa-esp32s3-elf/esp-12.2.0_20230208/xtensa-esp32s3-elf/bin/xtensa-esp32s3-elf-ld")
+set(CMAKE_AR "/home/shun/.espressif/tools/riscv32-esp-elf/esp-12.2.0_20230208/riscv32-esp-elf/bin/riscv32-esp-elf-ar")
+set(CMAKE_CXX_COMPILER_AR "/home/shun/.espressif/tools/riscv32-esp-elf/esp-12.2.0_20230208/riscv32-esp-elf/bin/riscv32-esp-elf-gcc-ar")
+set(CMAKE_RANLIB "/home/shun/.espressif/tools/riscv32-esp-elf/esp-12.2.0_20230208/riscv32-esp-elf/bin/riscv32-esp-elf-ranlib")
+set(CMAKE_CXX_COMPILER_RANLIB "/home/shun/.espressif/tools/riscv32-esp-elf/esp-12.2.0_20230208/riscv32-esp-elf/bin/riscv32-esp-elf-gcc-ranlib")
+set(CMAKE_LINKER "/home/shun/.espressif/tools/riscv32-esp-elf/esp-12.2.0_20230208/riscv32-esp-elf/bin/riscv32-esp-elf-ld")
 set(CMAKE_MT "")
 set(CMAKE_COMPILER_IS_GNUCXX 1)
 set(CMAKE_CXX_COMPILER_LOADED 1)
@@ -82,7 +82,7 @@ endif()
 
 
 
-set(CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES "/home/shun/.espressif/tools/xtensa-esp32s3-elf/esp-12.2.0_20230208/xtensa-esp32s3-elf/xtensa-esp32s3-elf/include/c++/12.2.0;/home/shun/.espressif/tools/xtensa-esp32s3-elf/esp-12.2.0_20230208/xtensa-esp32s3-elf/xtensa-esp32s3-elf/include/c++/12.2.0/xtensa-esp32s3-elf;/home/shun/.espressif/tools/xtensa-esp32s3-elf/esp-12.2.0_20230208/xtensa-esp32s3-elf/xtensa-esp32s3-elf/include/c++/12.2.0/backward;/home/shun/.espressif/tools/xtensa-esp32s3-elf/esp-12.2.0_20230208/xtensa-esp32s3-elf/lib/gcc/xtensa-esp32s3-elf/12.2.0/include;/home/shun/.espressif/tools/xtensa-esp32s3-elf/esp-12.2.0_20230208/xtensa-esp32s3-elf/lib/gcc/xtensa-esp32s3-elf/12.2.0/include-fixed;/home/shun/.espressif/tools/xtensa-esp32s3-elf/esp-12.2.0_20230208/xtensa-esp32s3-elf/xtensa-esp32s3-elf/sys-include;/home/shun/.espressif/tools/xtensa-esp32s3-elf/esp-12.2.0_20230208/xtensa-esp32s3-elf/xtensa-esp32s3-elf/include")
-set(CMAKE_CXX_IMPLICIT_LINK_LIBRARIES "stdc++;m;gcc;c;nosys;c;gcc")
-set(CMAKE_CXX_IMPLICIT_LINK_DIRECTORIES "/home/shun/.espressif/tools/xtensa-esp32s3-elf/esp-12.2.0_20230208/xtensa-esp32s3-elf/lib/gcc/xtensa-esp32s3-elf/12.2.0;/home/shun/.espressif/tools/xtensa-esp32s3-elf/esp-12.2.0_20230208/xtensa-esp32s3-elf/lib/gcc;/home/shun/.espressif/tools/xtensa-esp32s3-elf/esp-12.2.0_20230208/xtensa-esp32s3-elf/xtensa-esp32s3-elf/lib")
+set(CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES "/home/shun/.espressif/tools/riscv32-esp-elf/esp-12.2.0_20230208/riscv32-esp-elf/riscv32-esp-elf/include/c++/12.2.0;/home/shun/.espressif/tools/riscv32-esp-elf/esp-12.2.0_20230208/riscv32-esp-elf/riscv32-esp-elf/include/c++/12.2.0/riscv32-esp-elf/rv32imc_zicsr_zifencei/ilp32;/home/shun/.espressif/tools/riscv32-esp-elf/esp-12.2.0_20230208/riscv32-esp-elf/riscv32-esp-elf/include/c++/12.2.0/backward;/home/shun/.espressif/tools/riscv32-esp-elf/esp-12.2.0_20230208/riscv32-esp-elf/lib/gcc/riscv32-esp-elf/12.2.0/include;/home/shun/.espressif/tools/riscv32-esp-elf/esp-12.2.0_20230208/riscv32-esp-elf/lib/gcc/riscv32-esp-elf/12.2.0/include-fixed;/home/shun/.espressif/tools/riscv32-esp-elf/esp-12.2.0_20230208/riscv32-esp-elf/riscv32-esp-elf/sys-include;/home/shun/.espressif/tools/riscv32-esp-elf/esp-12.2.0_20230208/riscv32-esp-elf/riscv32-esp-elf/include")
+set(CMAKE_CXX_IMPLICIT_LINK_LIBRARIES "stdc++;m;gcc;c;nosys;c;gcc;gcc;c;nosys")
+set(CMAKE_CXX_IMPLICIT_LINK_DIRECTORIES "/home/shun/.espressif/tools/riscv32-esp-elf/esp-12.2.0_20230208/riscv32-esp-elf/lib/gcc/riscv32-esp-elf/12.2.0/rv32imc_zicsr_zifencei/ilp32;/home/shun/.espressif/tools/riscv32-esp-elf/esp-12.2.0_20230208/riscv32-esp-elf/riscv32-esp-elf/lib/rv32imc_zicsr_zifencei/ilp32;/home/shun/.espressif/tools/riscv32-esp-elf/esp-12.2.0_20230208/riscv32-esp-elf/lib/gcc/riscv32-esp-elf/12.2.0;/home/shun/.espressif/tools/riscv32-esp-elf/esp-12.2.0_20230208/riscv32-esp-elf/lib/gcc;/home/shun/.espressif/tools/riscv32-esp-elf/esp-12.2.0_20230208/riscv32-esp-elf/riscv32-esp-elf/lib")
 set(CMAKE_CXX_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES "")

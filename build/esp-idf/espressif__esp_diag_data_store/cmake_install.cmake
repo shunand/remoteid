@@ -1,4 +1,4 @@
-# Install script for directory: /home/shun/esp/esp-idf/hello_world/managed_components/espressif__esp_diag_data_store
+# Install script for directory: /home/shun/esp/hello_world/managed_components/espressif__esp_diag_data_store
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
