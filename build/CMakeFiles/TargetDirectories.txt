@@ -815,6 +815,13 @@
 /home/shun/esp/hello_world/build/esp-idf/mavlink2/CMakeFiles/rebuild_cache.dir
 /home/shun/esp/hello_world/build/esp-idf/mavlink2/CMakeFiles/edit_cache.dir
 /home/shun/esp/hello_world/build/esp-idf/mavlink2/CMakeFiles/__idf_mavlink2.dir
+/home/shun/esp/hello_world/build/esp-idf/opendriver/CMakeFiles/install/strip.dir
+/home/shun/esp/hello_world/build/esp-idf/opendriver/CMakeFiles/install/local.dir
+/home/shun/esp/hello_world/build/esp-idf/opendriver/CMakeFiles/install.dir
+/home/shun/esp/hello_world/build/esp-idf/opendriver/CMakeFiles/list_install_components.dir
+/home/shun/esp/hello_world/build/esp-idf/opendriver/CMakeFiles/rebuild_cache.dir
+/home/shun/esp/hello_world/build/esp-idf/opendriver/CMakeFiles/edit_cache.dir
+/home/shun/esp/hello_world/build/esp-idf/opendriver/CMakeFiles/__idf_opendriver.dir
 /home/shun/esp/hello_world/build/esp-idf/main/CMakeFiles/install/strip.dir
 /home/shun/esp/hello_world/build/esp-idf/main/CMakeFiles/install/local.dir
 /home/shun/esp/hello_world/build/esp-idf/main/CMakeFiles/install.dir

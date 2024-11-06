@@ -85,4 +85,5 @@
 /home/shun/esp/hello_world/build/esp-idf/libopendroneid/liblibopendroneid.a
 /home/shun/esp/hello_world/build/esp-idf/DroneCAN_generated/libDroneCAN_generated.a
 /home/shun/esp/hello_world/build/esp-idf/mavlink2/libmavlink2.a
+/home/shun/esp/hello_world/build/esp-idf/opendriver/libopendriver.a
 /home/shun/esp/hello_world/build/esp-idf/main/libmain.a

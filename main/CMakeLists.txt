@@ -1,30 +1,10 @@
 
 
 set(srcs-hello
-    "mavlink.cpp"
-    "CANDriver.cpp"
-    "DroneCAN.cpp"
-    "WiFi_TX.cpp"
-    "BLE_TX.cpp"
-    "transport.cpp"
-    "transmitter.cpp"
-    "parameters.cpp"
-    "romfs.cpp"
-    "webinterface.cpp"
-    "check_firmware.cpp"
-    "monocypher.cpp"
-    "tinfgzip.cpp"
-    "tinflate.cpp"
-    "status.cpp"
-    "util.cpp"
-    "efuse.cpp"
-    "led.cpp"
-    "Adafruit_NeoPixel.cpp"
-    "esp.c"
+   
 
 
    
- 
 
 )
 set(include_hello
@@ -37,6 +17,7 @@ set(requires
       libcanard
     libopendroneid
    mavlink2
+   opendriver
    esp_hw_support
    esp_partition
    nvs_flash 

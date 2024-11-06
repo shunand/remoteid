@@ -1,0 +1,10 @@
+[0/1] cd /home/shun/esp/hello_world/build && /usr/bin/cmake -D "IDF_SIZE_TOOL=/home/shun/.espressif/python_env/idf5.1_py3.8_env/bin/python;-m;esp_idf_size" -D MAP_FILE=/home/shun/esp/hello_world/build/hello_world.map -D OUTPUT_JSON= -P /home/shun/esp/esp-idf/tools/cmake/run_size_tool.cmake
+Total sizes:
+Used stat D/IRAM:  149486 bytes ( 171810 remain, 46.5% used)
+      .data size:   13524 bytes
+      .bss  size:   42120 bytes
+      .text size:   93842 bytes
+Used Flash size : 1639888 bytes
+           .text: 1254048 bytes
+         .rodata:  382496 bytes
+Total image size: 1747254 bytes (.bin may be padded larger)
