@@ -1,0 +1,1 @@
+include/uavcan.protocol.GetNodeInfo_req.h

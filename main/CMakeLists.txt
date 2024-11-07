@@ -41,7 +41,23 @@ set(incs
     "${IDF_PATH}/components/freertos/FreeRTOS-Kernel/include/freertos"
 )
 
+set(requires
+       arduino-esp32-3.0.7
+      DroneCAN_generated
+      libcanard
+    libopendroneid
+   mavlink2
+   opendriver
+   esp_hw_support
+   esp_partition
+   nvs_flash 
+   app_update   
+    efuse
+   )
+
+
 idf_component_register(SRCS "main.c"
     ${srcs-components}
     ${srcs-common}
-    INCLUDE_DIRS "." ${incs})
+    INCLUDE_DIRS "." ${incs}
+    REQUIRES ${requires})

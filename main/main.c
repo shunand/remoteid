@@ -63,22 +63,22 @@ static void _port_thread_sleep(k_tick_t sleep_ticks)
 static void _os_init(void)
 {
     static k_init_t const init_struct = {
-        .malloc = os_malloc,
-        .free = os_free,
-        .get_sys_ticks = os_get_sys_ticks,
-        .interrupt_save = _port_interrupt_save,
-        .interrupt_restore = _port_interrupt_restore,
-        .scheduler_disable = os_scheduler_suspend,
-        .scheduler_enable = os_scheduler_resume,
-        .get_work_q_hdl = _port_get_work_q_hdl,
-        .thread_sleep = _port_thread_sleep,
+        .malloc = os_malloc,  //执行申请内存
+        .free = os_free,     //执行释放内存
+        .get_sys_ticks = os_get_sys_ticks, // 获取当前系统时间
+        .interrupt_save = _port_interrupt_save,   // 禁止中断
+        .interrupt_restore = _port_interrupt_restore,  // 恢复中断
+        .scheduler_disable = os_scheduler_suspend,  // 禁止线程的调度
+        .scheduler_enable = os_scheduler_resume,   // 恢复线程的调度
+        .get_work_q_hdl = _port_get_work_q_hdl,   //获取当前线程的句柄如果五个没找到会把链表放到前面
+        .thread_sleep = _port_thread_sleep,     //线程进行休眠
     };
     k_init(&init_struct);
 
     os_work_q_create(default_os_work_q_hdl,
                      "app-work_q",
                      CONFIG_OS_THREAD_MAIN_STACK_SIZE,
-                     CONFIG_OS_THREAD_MAIN_PRIORITY);
+                     CONFIG_OS_THREAD_MAIN_PRIORITY); //创建一个线程优先级最高
 
     extern void work_app_main(void *arg);
     static os_work_t _work_hdl_init;
@@ -101,7 +101,8 @@ static void _init_prev_nvs(void)
     ESP_ERROR_CHECK(err);
 }
 
-int app_main(void)
+
+ int app_main(void)
 {
     /* ota */
     ota_partition_check();

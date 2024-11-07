@@ -1,0 +1,1 @@
+include/uavcan.protocol.debug.LogMessage.h

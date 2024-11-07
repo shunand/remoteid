@@ -280,7 +280,7 @@ static os_queue_t *_pulled_button_init(unsigned long long pin_select, gpio_pull_
     // Scan the pin map to determine number of pins
     pin_count = 0;
     int pin = 0;
-    for (pin = 0; pin < sizeof(pin_select) * 8; pin++)
+    for (pin = 0; pin < sizeof(pin_select) * 8; pin++)  //按位与检查结果
     {
         if ((1ULL << pin) & pin_select)
         {

@@ -1,0 +1,1 @@
+src/uavcan.protocol.HardwareVersion.c

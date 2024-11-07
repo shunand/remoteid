@@ -1,5 +1,5 @@
 #include "app_main.h"
-
+#include "opendriver.h"
 /* 标准库 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -22,6 +22,8 @@
 #include "console.h"
 #include "shell/sh_vset.h"
 
+
+
 #define CONFIG_SYS_LOG_LEVEL SYS_LOG_LEVEL_DBG
 #define SYS_LOG_DOMAIN "MAIN"
 #include "sys_log.h"
@@ -32,17 +34,20 @@ os_work_q_t g_work_q_hdl_low; // 低于 default_os_work_q_hdl 优先级的工作
 static void _init_nvs(void);
 static int _change_mode_event_button(const button_event_t *event);
 static void _vset_cb(sh_t *sh_hdl);
+extern void openDriver();  // 声明 C++ 函数
 
-void work_app_main(void *arg)
+ void work_app_main(void *arg)
 {
     /* 初始化 SDK 的 nvs 模块 */
     _init_nvs();
-
+    
     /* 初始化按键检测和控制 */
-    button_init(PIN_BIT(g_cfg_board->key_boot.pin), g_cfg_board->key_boot.en_lev);
+    button_init(PIN_BIT(g_cfg_board->key_boot.pin), g_cfg_board->key_boot.en_lev); 
 
     button_event_add_callback(g_cfg_board->key_boot.pin, _change_mode_event_button);
-
+       static os_work_t _work_hdl_remoteid;
+     os_work_create(&_work_hdl_remoteid, "remoteid", openDriver, NULL, 3);
+    os_work_submit(default_os_work_q_hdl, &_work_hdl_remoteid, 0);
     /* 启动 shell */
     SYS_LOG_INF("app start");
     vset_init(&g_uart_handle_vt100, _vset_cb);

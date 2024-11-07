@@ -4,6 +4,8 @@
 #include "esp_ota_ops.h"
 #include "esp_flash_partitions.h"
 
+#include "sys_log.h"
+
 #define CONFIG_SYS_LOG_LEVEL SYS_LOG_LEVEL_WRN
 #define SYS_LOG_DOMAIN "OTA"
 #define CONS_ABORT()
@@ -31,14 +33,14 @@ void ota_partition_check()
     partition.size = ESP_PARTITION_TABLE_MAX_LEN;
     partition.type = ESP_PARTITION_TYPE_DATA;
     esp_partition_get_sha256(&partition, sha_256);
-    _print_sha256(sha_256, "SHA-256 for the partition table:");
+    _print_sha256(sha_256, "SHA-256 for the partition table:");   //打印data数据的分区表具体不清楚
 
     // get sha256 digest for bootloader
     partition.address = ESP_BOOTLOADER_OFFSET;
     partition.size = ESP_PARTITION_TABLE_OFFSET;
     partition.type = ESP_PARTITION_TYPE_APP;
     esp_partition_get_sha256(&partition, sha_256);
-    _print_sha256(sha_256, "SHA-256 for bootloader:         ");
+    _print_sha256(sha_256, "SHA-256 for bootloader:         ");    //打印类型为app的分区表具体不清楚
 
     // get sha256 digest for running partition
     esp_partition_get_sha256(esp_ota_get_running_partition(), sha_256);

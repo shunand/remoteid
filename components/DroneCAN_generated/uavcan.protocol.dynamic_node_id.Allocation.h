@@ -1,0 +1,1 @@
+include/uavcan.protocol.dynamic_node_id.Allocation.h

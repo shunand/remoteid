@@ -1,0 +1,1 @@
+include/uavcan.protocol.NodeStatus.h
