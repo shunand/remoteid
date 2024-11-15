@@ -16,8 +16,8 @@
 
 #elif defined(BOARD_ESP32C3_DEV)
 #define BOARD_ID 2
-#define PIN_CAN_TX GPIO_NUM_5
-#define PIN_CAN_RX GPIO_NUM_4
+// #define PIN_CAN_TX GPIO_NUM_5
+// #define PIN_CAN_RX GPIO_NUM_4
 
 #define PIN_UART_TX 3
 #define PIN_UART_RX 2

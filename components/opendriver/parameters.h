@@ -18,10 +18,10 @@ public:
     uint32_t baudrate = 57600;
     uint8_t ua_type;
     uint8_t id_type;
-    char uas_id[21] = "ABCD123456789";
+    char uas_id[21] = "0";
     uint8_t ua_type_2;
     uint8_t id_type_2;
-    char uas_id_2[21] = "ABCD123456789";
+    char uas_id_2[21] = "0";
     float wifi_nan_rate;
     float wifi_beacon_rate;
     float wifi_power;

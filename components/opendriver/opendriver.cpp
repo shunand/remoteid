@@ -1,9 +1,6 @@
 /*
   implement OpenDroneID MAVLink and DroneCAN support
  */
-/*
-  released under GNU GPL v2 or later
- */
 
 #include "options.h"
 #include <Arduino.h>
@@ -19,11 +16,7 @@
 #include <esp_wifi.h>
 #include <WiFi.h>
 #include "parameters.h"
-#include "webinterface.h"
-#include "check_firmware.h"
 #include <esp_ota_ops.h>
-#include "efuse.h"
-#include "led.h"
 
 
 #if AP_DRONECAN_ENABLED
@@ -35,7 +28,7 @@ static MAVLinkSerial mavlink1{Serial1, MAVLINK_COMM_0};
 static MAVLinkSerial mavlink2{Serial,  MAVLINK_COMM_1};
 #endif
 
-static WiFi_TX wifi;
+
 static BLE_TX ble;
 
 #define DEBUG_BAUDRATE 57600
@@ -44,13 +37,14 @@ static BLE_TX ble;
 ODID_UAS_Data UAS_data;
 String status_reason;
 static uint32_t last_location_ms;
-static WebInterface webif;
+
 
 #include "soc/soc.h"
 #include "soc/rtc_cntl_reg.h"
 
 static bool arm_check_ok = false; // goes true for LED arm check status
 static bool pfst_check_ok = false;
+
 #define IMIN(x,y) ((x)<(y)?(x):(y))
 #define ODID_COPY_STR(to, from) strncpy(to, (const char*)from, IMIN(sizeof(to), sizeof(from)))
 
@@ -225,7 +219,6 @@ static void set_data(Transport &t)
         arm_check_ok = true;
     }
 
-    led.set_state(pfst_check_ok && arm_check_ok? Led::LedState::ARM_OK : Led::LedState::ARM_FAIL);
 
     uint32_t now_ms = millis();
     uint32_t location_age_ms = now_ms - t.get_last_location_ms();
@@ -238,25 +231,14 @@ static void set_data(Transport &t)
 static uint8_t loop_counter = 0;
 
 
-
 extern "C" void openDriver() {
 
     initArduino();
-
-  
-    // disable brownout checking
+     // disable brownout checking
     WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0);
 
     g.init();
-
-    led.set_state(Led::LedState::INIT);
-    led.update();
-
-    if (g.webserver_enable) {
-        // need WiFi for web server
-        wifi.init();
-    }
-
+   
     // Serial for debug printf
     Serial.begin(g.baudrate);
 
@@ -265,20 +247,14 @@ extern "C" void openDriver() {
 
     // set all fields to invalid/initial values
     odid_initUasData(&UAS_data);
-
-#if AP_MAVLINK_ENABLED
+    #if AP_MAVLINK_ENABLED
     mavlink1.init();
     mavlink2.init();
-#endif
-#if AP_DRONECAN_ENABLED
+    #endif
+    #if AP_DRONECAN_ENABLED
     dronecan.init();
-#endif
-
-    set_efuses();
-
-    CheckFirmware::check_OTA_running();
-
-#if defined(PIN_CAN_EN)
+    #endif
+    #if defined(PIN_CAN_EN)
     // optional CAN enable pin
     pinMode(PIN_CAN_EN, OUTPUT);
     digitalWrite(PIN_CAN_EN, HIGH);
@@ -302,18 +278,17 @@ extern "C" void openDriver() {
     digitalWrite(GPIO_NUM_39, HIGH);
 #endif
 
-    pfst_check_ok = true;   // note - this will need to be expanded to better capture PFST test status
-
-    // initially set LED for fail
-    led.set_state(Led::LedState::ARM_FAIL);
+     pfst_check_ok = true;   // note - this will need to be expanded to better capture PFST test status
 
     esp_log_level_set("*", ESP_LOG_DEBUG);
 
     esp_ota_mark_app_valid_cancel_rollback();
 
-  // Arduino-like loop()
-  while(true){
-    #if AP_MAVLINK_ENABLED
+
+
+
+    while(true){
+#if AP_MAVLINK_ENABLED
     mavlink1.update();
     mavlink2.update();
 #endif
@@ -337,11 +312,10 @@ extern "C" void openDriver() {
     const uint32_t last_location_ms = transport.get_last_location_ms();
     const uint32_t last_system_ms = transport.get_last_system_ms();
 
-    led.update();
 
     status_reason = "";
 
-    if (last_location_ms == 0 ||
+     if (last_location_ms == 0 ||
         now_ms - last_location_ms > 5000) {
         UAS_data.Location.Status = ODID_STATUS_REMOTE_ID_SYSTEM_FAILURE;
     }
@@ -356,12 +330,7 @@ extern "C" void openDriver() {
         status_reason = String(transport.get_parse_fail());
     }
 
-    // web update has to happen after we update Status above
-    if (g.webserver_enable) {
-        webif.update();
-    }
-
-    if (g.bcast_powerup) {
+      if (g.bcast_powerup) {
         // if we are broadcasting on powerup we always mark location valid
         // so the location with default data is sent
         if (!UAS_data.LocationValid) {
@@ -377,20 +346,6 @@ extern "C" void openDriver() {
     }
 
     set_data(transport);
-
-    static uint32_t last_update_wifi_nan_ms;
-    if (g.wifi_nan_rate > 0 &&
-        now_ms - last_update_wifi_nan_ms > 1000/g.wifi_nan_rate) {
-        last_update_wifi_nan_ms = now_ms;
-        wifi.transmit_nan(UAS_data);
-    }
-
-    static uint32_t last_update_wifi_beacon_ms;
-    if (g.wifi_beacon_rate > 0 &&
-        now_ms - last_update_wifi_beacon_ms > 1000/g.wifi_beacon_rate) {
-        last_update_wifi_beacon_ms = now_ms;
-        wifi.transmit_beacon(UAS_data);
-    }
 
     static uint32_t last_update_bt5_ms;
     if (g.bt5_rate > 0 &&
@@ -409,7 +364,12 @@ extern "C" void openDriver() {
 
     // sleep for a bit for power saving
     delay(1);
-  }
+
+
+    }
+
+   
+
 
 
 

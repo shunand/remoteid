@@ -4,12 +4,9 @@
 #include "esp_mac.h"
 #include <nvs_flash.h>
 #include <string.h>
-#include "romfs.h"
 #include "util.h"
 Parameters g;
 static nvs_handle handle;
-
-
 const Parameters::Param Parameters::params[] = {
     { "LOCK_LEVEL",        Parameters::ParamType::INT8,  (const void*)&g.lock_level,       0, -1, 2 },  //控制板的锁定
     { "CAN_NODE",          Parameters::ParamType::UINT8,  (const void*)&g.can_node,         0, 0, 127 },
@@ -373,18 +370,8 @@ void Parameters::init(void)
         esp_restart();
     }
 
-    if (g.done_init == 0) {
-        set_by_name_uint8("DONE_INIT", 1);
-        // setup public keys
-        set_by_name_char64("PUBLIC_KEY1", ROMFS::find_string("public_keys/ArduPilot_public_key1.dat"));
-        set_by_name_char64("PUBLIC_KEY2", ROMFS::find_string("public_keys/ArduPilot_public_key2.dat"));
-#if defined(BOARD_BLUEMARK_DB200) || defined(BOARD_BLUEMARK_DB110) || defined(BOARD_BLUEMARK_DB202) || defined(BOARD_BLUEMARK_DB210) || defined(BOARD_BLUEMARK_DB203)
-        set_by_name_char64("PUBLIC_KEY3", ROMFS::find_string("public_keys/BlueMark_public_key1.dat"));
-#else
-        set_by_name_char64("PUBLIC_KEY3", ROMFS::find_string("public_keys/ArduPilot_public_key3.dat"));
-#endif
-
-    }
+  
+    
 }
 
 /*

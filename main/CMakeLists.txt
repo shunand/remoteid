@@ -47,12 +47,11 @@ set(requires
       libcanard
     libopendroneid
    mavlink2
-   opendriver
    esp_hw_support
    esp_partition
    nvs_flash 
    app_update   
-    efuse
+   efuse
    )
 
 

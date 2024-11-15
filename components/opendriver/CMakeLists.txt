@@ -9,20 +9,14 @@ set(srcs-hello
     "transport.cpp"
     "transmitter.cpp"
     "parameters.cpp"
-    "romfs.cpp"
-    "webinterface.cpp"
-    "check_firmware.cpp"
     "monocypher.cpp"
     "tinfgzip.cpp"
     "tinflate.cpp"
     "status.cpp"
     "util.cpp"
-    "efuse.cpp"
-    "led.cpp"
-    "Adafruit_NeoPixel.cpp"
-    "esp.c"
-
-
+  
+   
+  
    
  
 
