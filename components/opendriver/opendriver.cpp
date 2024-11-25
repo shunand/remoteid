@@ -24,19 +24,19 @@ static DroneCAN dronecan;
 #endif
 
 #if AP_MAVLINK_ENABLED
-static MAVLinkSerial mavlink1{Serial1, MAVLINK_COMM_0};
-static MAVLinkSerial mavlink2{Serial,  MAVLINK_COMM_1};
+static MAVLinkSerial mavlink1{Serial1, MAVLINK_COMM_0}; //串口1，通道0
+static MAVLinkSerial mavlink2{Serial,  MAVLINK_COMM_1}; //串口0，通道1
 #endif
 
 
-static BLE_TX ble;
+static BLE_TX ble;//创建对象
 
 #define DEBUG_BAUDRATE 57600
 
 // OpenDroneID output data structure
-ODID_UAS_Data UAS_data;
-String status_reason;
-static uint32_t last_location_ms;
+ODID_UAS_Data UAS_data; //消息结构体
+String status_reason; //字符串
+static uint32_t last_location_ms; //
 
 
 #include "soc/soc.h"
@@ -235,7 +235,7 @@ extern "C" void openDriver() {
 
     initArduino();
      // disable brownout checking
-    WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0);
+    WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0); //禁止监测供电电压
 
     g.init();
    
