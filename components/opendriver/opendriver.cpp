@@ -18,6 +18,9 @@
 #include "parameters.h"
 #include <esp_ota_ops.h>
 
+#define CONFIG_SYS_LOG_LEVEL SYS_LOG_LEVEL_DBG
+#define SYS_LOG_DOMAIN "opendriver"
+#include "sys_log.h"
 
 #if AP_DRONECAN_ENABLED
 static DroneCAN dronecan;
@@ -236,12 +239,14 @@ extern "C" void openDriver() {
     initArduino();
      // disable brownout checking
     WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0); //禁止监测供电电压
-
-    g.init();
-   
     // Serial for debug printf
-    Serial.begin(g.baudrate);
-
+    Serial.begin(115200);
+    SYS_LOG_INF("RemoteID initialization starts");
+    g.init();
+    
+    
+   
+   
     // Serial1 for MAVLink
     Serial1.begin(g.baudrate, SERIAL_8N1, PIN_UART_RX, PIN_UART_TX);
 

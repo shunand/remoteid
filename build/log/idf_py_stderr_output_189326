@@ -1,0 +1,20 @@
+ESP Insights Project commit: c31ed93-dirty
+ESP RainMaker Project commit: c31ed93-dirty
+CMake Error at /home/shun/esp/esp-idf/tools/cmake/component.cmake:479 (add_library):
+  Cannot find source file:
+
+    /home/shun/esp/remoteid/components/opendriver/HardwareSerial.cpp
+
+  Tried extensions .c .C .c++ .cc .cpp .cxx .cu .m .M .mm .h .hh .h++ .hm
+  .hpp .hxx .in .txx
+Call Stack (most recent call first):
+  components/opendriver/CMakeLists.txt:39 (idf_component_register)
+
+
+CMake Error at /home/shun/esp/esp-idf/tools/cmake/component.cmake:479 (add_library):
+  No SOURCES given to target: __idf_opendriver
+Call Stack (most recent call first):
+  components/opendriver/CMakeLists.txt:39 (idf_component_register)
+
+
+CMake Generate step failed.  Build files cannot be regenerated correctly.

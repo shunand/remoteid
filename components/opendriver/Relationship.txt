@@ -1,0 +1,50 @@
+typedef struct ODID_UAS_Data
+{
+
+    // operation
+    char operator_id[20];     // 对应mavlink获取mavlink_msg_open_drone_id_operator_id_get_operator_id
+    uint8_t operator_id_type; // 对应mavlink获取mavlink_msg_open_drone_id_operator_id_get_operator_id_type
+    // BasicID
+    uint8_t ua_type; // 对应mavlink获取mavlink_msg_open_drone_id_basic_id_get_ua_type
+    uint8_t id_type; // 对应mavlink获取mavlink_msg_open_drone_id_basic_id_get_id_type
+    char uas_id[21]; // 对应mavlink获取mavlink_msg_open_drone_id_basic_id_get_uas_id
+    // selfID
+    uint8_t description_type; // 对应mavlink获取mavlink_msg_open_drone_id_self_id_get_description_type
+    char description[23];     // 对应mavlink获取mavlink_msg_open_drone_id_self_id_get_description
+                          // system
+    uint8_t operator_location_type; // mavlink_msg_open_drone_id_system_get_operator_location_type
+    uint8_t classification_type；   // mavlink_msg_open_drone_id_system_get_classification_type
+        int32_t operator_latitude;  // mavlink_msg_open_drone_id_system_get_operator_latitude
+    int32_t operator_longitude;     // mavlink_msg_open_drone_id_system_get_operator_longitude
+    uint16_t area_count;            // mavlink_msg_open_drone_id_system_get_area_count
+    uint16_t area_radius;           // mavlink_msg_open_drone_id_system_get_area_radius
+    float area_ceiling;             // mavlink_msg_open_drone_id_system_get_area_ceiling
+    float area_floor;               // mavlink_msg_open_drone_id_system_get_area_floor
+    uint8_t category_eu;            // mavlink_msg_open_drone_id_system_get_category_eu
+    uint8_t class_eu;               // mavlink_msg_open_drone_id_system_get_class_eu
+    float operator_altitude_geo;    // mavlink_msg_open_drone_id_system_get_operator_altitude_geo
+    uint32_t timestamp;             // mavlink_msg_open_drone_id_system_get_timestamp
+    // location
+    uint8_t status;              // mavlink_msg_open_drone_id_location_get_status
+    uint16_t direction;          // mavlink_msg_open_drone_id_location_get_direction
+    uint16_t speed_horizontal;   // mavlink_msg_open_drone_id_location_get_speed_horizontal
+    int16_t speed_vertical;      // mavlink_msg_open_drone_id_location_get_speed_vertical
+    int32_t latitude;            // mavlink_msg_open_drone_id_location_get_latitude
+    int32_t longitude;           // mavlink_msg_open_drone_id_location_get_longitude
+    float altitude_barometric;   // mavlink_msg_open_drone_id_location_get_altitude_barometric
+    float altitude_geodetic;     // mavlink_msg_open_drone_id_location_get_altitude_geodetic
+    uint8_t height_reference;    // mavlink_msg_open_drone_id_location_get_height_reference
+    float height;                // mavlink_msg_open_drone_id_location_get_height
+    uint8_t horizontal_accuracy; // mavlink_msg_open_drone_id_location_get_horizontal_accuracy
+    uint8_t vertical_accuracy;   // mavlink_msg_open_drone_id_location_get_vertical_accuracy
+    uint8_t barometer_accuracy;  // mavlink_msg_open_drone_id_location_get_barometer_accuracy
+    uint8_t speed_accuracy;      // mavlink_msg_open_drone_id_location_get_speed_accuracy
+    uint8_t timestamp_accuracy;  // mavlink_msg_open_drone_id_location_get_timestamp_accuracy
+    float timestamp;             // mavlink_msg_open_drone_id_location_get_timestamp
+
+    //
+    uint32_t timestamp;          // mavlink_msg_open_drone_id_authentication_get_timestamp
+    uint8_t length;              // mavlink_msg_open_drone_id_authentication_get_length
+    uint8_t authentication_type; // mavlink_msg_open_drone_id_authentication_get_authentication_type
+
+} ODID_UAS_Data;

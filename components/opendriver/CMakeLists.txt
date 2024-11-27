@@ -10,10 +10,9 @@ set(srcs-hello
     "transmitter.cpp"
     "parameters.cpp"
     "monocypher.cpp"
-    "tinfgzip.cpp"
-    "tinflate.cpp"
     "status.cpp"
     "util.cpp"
+    "HardwareSerial.cpp"
   
    
   
@@ -36,6 +35,7 @@ set(requires
    nvs_flash 
    app_update   
     efuse
+    system
    )
 idf_component_register(SRCS "opendriver.cpp"
     ${srcs-hello}
