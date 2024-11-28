@@ -794,6 +794,13 @@
 /home/shun/esp/remoteid/build/esp-idf/libcanard/CMakeFiles/rebuild_cache.dir
 /home/shun/esp/remoteid/build/esp-idf/libcanard/CMakeFiles/edit_cache.dir
 /home/shun/esp/remoteid/build/esp-idf/libcanard/CMakeFiles/__idf_libcanard.dir
+/home/shun/esp/remoteid/build/esp-idf/system/CMakeFiles/install/strip.dir
+/home/shun/esp/remoteid/build/esp-idf/system/CMakeFiles/install/local.dir
+/home/shun/esp/remoteid/build/esp-idf/system/CMakeFiles/install.dir
+/home/shun/esp/remoteid/build/esp-idf/system/CMakeFiles/list_install_components.dir
+/home/shun/esp/remoteid/build/esp-idf/system/CMakeFiles/rebuild_cache.dir
+/home/shun/esp/remoteid/build/esp-idf/system/CMakeFiles/edit_cache.dir
+/home/shun/esp/remoteid/build/esp-idf/system/CMakeFiles/__idf_system.dir
 /home/shun/esp/remoteid/build/esp-idf/libopendroneid/CMakeFiles/install/strip.dir
 /home/shun/esp/remoteid/build/esp-idf/libopendroneid/CMakeFiles/install/local.dir
 /home/shun/esp/remoteid/build/esp-idf/libopendroneid/CMakeFiles/install.dir
@@ -822,13 +829,6 @@
 /home/shun/esp/remoteid/build/esp-idf/main/CMakeFiles/rebuild_cache.dir
 /home/shun/esp/remoteid/build/esp-idf/main/CMakeFiles/edit_cache.dir
 /home/shun/esp/remoteid/build/esp-idf/main/CMakeFiles/__idf_main.dir
-/home/shun/esp/remoteid/build/esp-idf/system/CMakeFiles/install/strip.dir
-/home/shun/esp/remoteid/build/esp-idf/system/CMakeFiles/install/local.dir
-/home/shun/esp/remoteid/build/esp-idf/system/CMakeFiles/install.dir
-/home/shun/esp/remoteid/build/esp-idf/system/CMakeFiles/list_install_components.dir
-/home/shun/esp/remoteid/build/esp-idf/system/CMakeFiles/rebuild_cache.dir
-/home/shun/esp/remoteid/build/esp-idf/system/CMakeFiles/edit_cache.dir
-/home/shun/esp/remoteid/build/esp-idf/system/CMakeFiles/__idf_system.dir
 /home/shun/esp/remoteid/build/esp-idf/opendriver/CMakeFiles/install/strip.dir
 /home/shun/esp/remoteid/build/esp-idf/opendriver/CMakeFiles/install/local.dir
 /home/shun/esp/remoteid/build/esp-idf/opendriver/CMakeFiles/install.dir

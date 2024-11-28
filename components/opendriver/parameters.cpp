@@ -5,6 +5,10 @@
 #include <nvs_flash.h>
 #include <string.h>
 #include "util.h"
+#define CONFIG_SYS_LOG_LEVEL SYS_LOG_LEVEL_DBG
+#define SYS_LOG_DOMAIN "parameters"
+#include "sys_log.h"
+
 Parameters g;
 static nvs_handle handle;
 const Parameters::Param Parameters::params[] = {
@@ -299,15 +303,19 @@ void Parameters::load_defaults(void)
         switch (p.ptype)
         {
         case ParamType::UINT8:
+             SYS_LOG_INF("ParamType::UINT8 - ptr: %p, default_value: %u", p.ptr, uint8_t(p.default_value));
             *(uint8_t *)p.ptr = uint8_t(p.default_value);
             break;
                 case ParamType::INT8:
+             SYS_LOG_INF("ParamType::INT8 - ptr: %p, default_value: %d", p.ptr, int8_t(p.default_value));
             *(int8_t *)p.ptr = int8_t(p.default_value);
             break;
         case ParamType::UINT32:
+         SYS_LOG_INF("ParamType::UINT32 - ptr: %p, default_value: %u", p.ptr, uint32_t(p.default_value));
             *(uint32_t *)p.ptr = uint32_t(p.default_value);
             break;
         case ParamType::FLOAT:
+          SYS_LOG_INF("ParamType::float - ptr: %p, default_value: %f", p.ptr, float(p.default_value));
             *(float *)p.ptr = p.default_value;
             break;
         default:
@@ -322,7 +330,7 @@ void Parameters::load_defaults(void)
 void Parameters::init(void)
 {
     load_defaults();
-
+     SYS_LOG_INF("load_defaults");
     if (nvs_flash_init() != ESP_OK ||
         nvs_open("storage", NVS_READWRITE, &handle) != ESP_OK) {
         Serial.printf("NVS init failed\n");
@@ -331,24 +339,33 @@ void Parameters::init(void)
     for (const auto &p : params) {
         switch (p.ptype) {
         case ParamType::UINT8:
+        // 打印 p.name 和 p.ptr
+     SYS_LOG_INF("nvs_get_u8(uint8) - p.name: %s, p.ptr: %p", p.name, p.ptr);
+
             nvs_get_u8(handle, p.name, (uint8_t *)p.ptr);
             break;
         case ParamType::INT8:
+           SYS_LOG_INF("nvs_get_i8(int8) - p.name: %s, p.ptr: %p", p.name, p.ptr);
             nvs_get_i8(handle, p.name, (int8_t *)p.ptr);
             break;
         case ParamType::UINT32:
+         SYS_LOG_INF("nvs_get_u32(uint32) - p.name: %s, p.ptr: %p", p.name, p.ptr);
             nvs_get_u32(handle, p.name, (uint32_t *)p.ptr);
             break;
         case ParamType::FLOAT:
+           SYS_LOG_INF("nvs_get_u32(float) - p.name: %s, p.ptr: %p", p.name, p.ptr);
             nvs_get_u32(handle, p.name, (uint32_t *)p.ptr);
             break;
         case ParamType::CHAR20: {
             size_t len = 21;
+            SYS_LOG_INF("nvs_get_str(char20) - p.name: %s, p.ptr: %p", p.name, p.ptr);
+
             nvs_get_str(handle, p.name, (char *)p.ptr, &len);
             break;
         }
         case ParamType::CHAR64: {
             size_t len = 65;
+             SYS_LOG_INF("nvs_get_str(char64) - p.name: %s, p.ptr: %p", p.name, p.ptr);
             nvs_get_str(handle, p.name, (char *)p.ptr, &len);
             break;
         }
@@ -362,9 +379,15 @@ void Parameters::init(void)
         esp_read_mac(mac, ESP_MAC_WIFI_STA);
         snprintf(wifi_ssid, 20, "RID_%02x%02x%02x%02x%02x%02x",
                  mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
+        
+      
+        SYS_LOG_INF("MAC Address: %02X:%02X:%02X:%02X:%02X:%02X",
+            mac[0], mac[1], mac[2], mac[3], mac[4], mac[5]);
 
     }
     if (g.to_factory_defaults == 1) {
+        SYS_LOG_INF("to_factory_defaults: %u", to_factory_defaults);
+
         //should not happen, but in case the parameter is still set to 1, erase flash and reboot
         nvs_flash_erase();
         esp_restart();

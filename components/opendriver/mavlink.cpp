@@ -6,13 +6,14 @@
 #include "options.h"
 #include "version.h"
 #include "parameters.h"
-
 #define SERIAL_BAUD 115200
 
 static HardwareSerial *serial_ports[MAVLINK_COMM_NUM_BUFFERS];
 
 #include <generated/mavlink_helpers.h>
-
+#define CONFIG_SYS_LOG_LEVEL SYS_LOG_LEVEL_DBG
+#define SYS_LOG_DOMAIN "mavlinkcpp"
+#include "sys_log.h"
 mavlink_system_t mavlink_system = {0, MAV_COMP_ID_ODID_TXRX_1};
 
 /*
@@ -43,6 +44,7 @@ void MAVLinkSerial::init(void)
     serial.printf("ArduRemoteID version %u.%u %08x\n",
                   FW_VERSION_MAJOR, FW_VERSION_MINOR, GIT_VERSION);
     mavlink_system.sysid = g.mavlink_sysid;
+   SYS_LOG_INF("mavlink_sysid: %u", g.mavlink_sysid); 
 }
 
 void MAVLinkSerial::update(void)

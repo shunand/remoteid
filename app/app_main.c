@@ -40,13 +40,15 @@ extern void openDriver();  // 声明 C++ 函数
 {
     /* 初始化 SDK 的 nvs 模块 */
     _init_nvs();
-    
+     SYS_LOG_INF("_init_nvs");
     /* 初始化按键检测和控制 */
     button_init(PIN_BIT(g_cfg_board->key_boot.pin), g_cfg_board->key_boot.en_lev); 
-
+    SYS_LOG_INF("button_init");
     button_event_add_callback(g_cfg_board->key_boot.pin, _change_mode_event_button);
-       static os_work_t _work_hdl_remoteid;
+    static os_work_t _work_hdl_remoteid;
+     SYS_LOG_INF("_change_mode_event_button");
      os_work_create(&_work_hdl_remoteid, "remoteid", openDriver, NULL, 3);
+     SYS_LOG_INF("openDriver");
     os_work_submit(default_os_work_q_hdl, &_work_hdl_remoteid, 0);
     /* 启动 shell */
     SYS_LOG_INF("app start");

@@ -27,20 +27,18 @@ static DroneCAN dronecan;
 #endif
 
 #if AP_MAVLINK_ENABLED
-static MAVLinkSerial mavlink1{Serial1, MAVLINK_COMM_0}; //串口1，通道0
-static MAVLinkSerial mavlink2{Serial,  MAVLINK_COMM_1}; //串口0，通道1
+static MAVLinkSerial mavlink1{Serial1, MAVLINK_COMM_0}; // 串口1，通道0
+static MAVLinkSerial mavlink2{Serial, MAVLINK_COMM_1};  // 串口0，通道1
 #endif
 
-
-static BLE_TX ble;//创建对象
+static BLE_TX ble; // 创建对象
 
 #define DEBUG_BAUDRATE 57600
 
 // OpenDroneID output data structure
-ODID_UAS_Data UAS_data; //消息结构体
-String status_reason; //字符串
+ODID_UAS_Data UAS_data;           // 消息结构体
+String status_reason;             // 字符串
 static uint32_t last_location_ms; //
-
 
 #include "soc/soc.h"
 #include "soc/rtc_cntl_reg.h"
@@ -48,8 +46,8 @@ static uint32_t last_location_ms; //
 static bool arm_check_ok = false; // goes true for LED arm check status
 static bool pfst_check_ok = false;
 
-#define IMIN(x,y) ((x)<(y)?(x):(y))
-#define ODID_COPY_STR(to, from) strncpy(to, (const char*)from, IMIN(sizeof(to), sizeof(from)))
+#define IMIN(x, y) ((x) < (y) ? (x) : (y))
+#define ODID_COPY_STR(to, from) strncpy(to, (const char *)from, IMIN(sizeof(to), sizeof(from)))
 
 /*
   check parsing of UAS_data, this checks ranges of values to ensure we
@@ -58,32 +56,37 @@ static bool pfst_check_ok = false;
 static const char *check_parse(void)
 {
     {
-        ODID_Location_encoded encoded {};
-        if (encodeLocationMessage(&encoded, &UAS_data.Location) != ODID_SUCCESS) {
+        ODID_Location_encoded encoded{};
+        if (encodeLocationMessage(&encoded, &UAS_data.Location) != ODID_SUCCESS)
+        {
             return "bad LOCATION data";
         }
     }
     {
-        ODID_System_encoded encoded {};
-        if (encodeSystemMessage(&encoded, &UAS_data.System) != ODID_SUCCESS) {
+        ODID_System_encoded encoded{};
+        if (encodeSystemMessage(&encoded, &UAS_data.System) != ODID_SUCCESS)
+        {
             return "bad SYSTEM data";
         }
     }
     {
-        ODID_BasicID_encoded encoded {};
-        if (encodeBasicIDMessage(&encoded, &UAS_data.BasicID[0]) != ODID_SUCCESS) {
+        ODID_BasicID_encoded encoded{};
+        if (encodeBasicIDMessage(&encoded, &UAS_data.BasicID[0]) != ODID_SUCCESS)
+        {
             return "bad BASIC_ID data";
         }
     }
     {
-        ODID_SelfID_encoded encoded {};
-        if (encodeSelfIDMessage(&encoded, &UAS_data.SelfID) != ODID_SUCCESS) {
+        ODID_SelfID_encoded encoded{};
+        if (encodeSelfIDMessage(&encoded, &UAS_data.SelfID) != ODID_SUCCESS)
+        {
             return "bad SELF_ID data";
         }
     }
     {
-        ODID_OperatorID_encoded encoded {};
-        if (encodeOperatorIDMessage(&encoded, &UAS_data.OperatorID) != ODID_SUCCESS) {
+        ODID_OperatorID_encoded encoded{};
+        if (encodeOperatorIDMessage(&encoded, &UAS_data.OperatorID) != ODID_SUCCESS)
+        {
             return "bad OPERATOR_ID data";
         }
     }
@@ -115,20 +118,23 @@ static void set_data(Transport &t)
       don't persist the BasicID2 if provided via mavlink to allow
       users to change BasicID2 on different days
      */
-    if (!g.have_basic_id_info()) {
+    if (!g.have_basic_id_info())
+    {
         if (basic_id.ua_type != 0 &&
             basic_id.id_type != 0 &&
-            strnlen((const char *)basic_id.uas_id, 20) > 0) {
+            strnlen((const char *)basic_id.uas_id, 20) > 0)
+        {
             g.set_by_name_uint8("UAS_TYPE", basic_id.ua_type);
             g.set_by_name_uint8("UAS_ID_TYPE", basic_id.id_type);
-            char uas_id[21] {};
+            char uas_id[21]{};
             ODID_COPY_STR(uas_id, basic_id.uas_id);
             g.set_by_name_string("UAS_ID", uas_id);
         }
     }
 
     // BasicID
-    if (g.have_basic_id_info()) {
+    if (g.have_basic_id_info())
+    {
         // from parameters
         UAS_data.BasicID[0].UAType = (ODID_uatype_t)g.ua_type;
         UAS_data.BasicID[0].IDType = (ODID_idtype_t)g.id_type;
@@ -136,20 +142,24 @@ static void set_data(Transport &t)
         UAS_data.BasicIDValid[0] = 1;
 
         // BasicID 2
-        if (g.have_basic_id_2_info()) {
+        if (g.have_basic_id_2_info())
+        {
             // from parameters
             UAS_data.BasicID[1].UAType = (ODID_uatype_t)g.ua_type_2;
             UAS_data.BasicID[1].IDType = (ODID_idtype_t)g.id_type_2;
             ODID_COPY_STR(UAS_data.BasicID[1].UASID, g.uas_id_2);
             UAS_data.BasicIDValid[1] = 1;
-        } else if (strcmp((const char*)g.uas_id, (const char*)basic_id.uas_id) != 0) {
+        }
+        else if (strcmp((const char *)g.uas_id, (const char *)basic_id.uas_id) != 0)
+        {
             /*
               no BasicID 2 in the parameters, if one is provided on MAVLink
               and it is a different uas_id from the basicID1 then use it as BasicID2
             */
             if (basic_id.ua_type != 0 &&
                 basic_id.id_type != 0 &&
-                strnlen((const char *)basic_id.uas_id, 20) > 0) {
+                strnlen((const char *)basic_id.uas_id, 20) > 0)
+            {
                 UAS_data.BasicID[1].UAType = (ODID_uatype_t)basic_id.ua_type;
                 UAS_data.BasicID[1].IDType = (ODID_idtype_t)basic_id.id_type;
                 ODID_COPY_STR(UAS_data.BasicID[1].UASID, basic_id.uas_id);
@@ -159,21 +169,24 @@ static void set_data(Transport &t)
     }
 
     // OperatorID
-    if (strlen(operator_id.operator_id) > 0) {
+    if (strlen(operator_id.operator_id) > 0)
+    {
         UAS_data.OperatorID.OperatorIdType = (ODID_operatorIdType_t)operator_id.operator_id_type;
         ODID_COPY_STR(UAS_data.OperatorID.OperatorId, operator_id.operator_id);
         UAS_data.OperatorIDValid = 1;
     }
 
     // SelfID
-    if (strlen(self_id.description) > 0) {
+    if (strlen(self_id.description) > 0)
+    {
         UAS_data.SelfID.DescType = (ODID_desctype_t)self_id.description_type;
         ODID_COPY_STR(UAS_data.SelfID.Desc, self_id.description);
         UAS_data.SelfIDValid = 1;
     }
 
     // System
-    if (system.timestamp != 0) {
+    if (system.timestamp != 0)
+    {
         UAS_data.System.OperatorLocationType = (ODID_operator_location_type_t)system.operator_location_type;
         UAS_data.System.ClassificationType = (ODID_classification_type_t)system.classification_type;
         UAS_data.System.OperatorLatitude = system.operator_latitude * 1.0e-7;
@@ -190,13 +203,14 @@ static void set_data(Transport &t)
     }
 
     // Location
-    if (location.timestamp != 0) {
+    if (location.timestamp != 0)
+    {
         UAS_data.Location.Status = (ODID_status_t)location.status;
-        UAS_data.Location.Direction = location.direction*0.01;
-        UAS_data.Location.SpeedHorizontal = location.speed_horizontal*0.01;
-        UAS_data.Location.SpeedVertical = location.speed_vertical*0.01;
-        UAS_data.Location.Latitude = location.latitude*1.0e-7;
-        UAS_data.Location.Longitude = location.longitude*1.0e-7;
+        UAS_data.Location.Direction = location.direction * 0.01;
+        UAS_data.Location.SpeedHorizontal = location.speed_horizontal * 0.01;
+        UAS_data.Location.SpeedVertical = location.speed_vertical * 0.01;
+        UAS_data.Location.Latitude = location.latitude * 1.0e-7;
+        UAS_data.Location.Longitude = location.longitude * 1.0e-7;
         UAS_data.Location.AltitudeBaro = location.altitude_barometric;
         UAS_data.Location.AltitudeGeo = location.altitude_geodetic;
         UAS_data.Location.HeightType = (ODID_Height_reference_t)location.height_reference;
@@ -211,55 +225,60 @@ static void set_data(Transport &t)
     }
 
     const char *reason = check_parse();
-    if (reason == nullptr) {
+    if (reason == nullptr)
+    {
         t.arm_status_check(reason);
     }
     t.set_parse_fail(reason);
 
-    arm_check_ok = (reason==nullptr);
+    arm_check_ok = (reason == nullptr);
 
-    if (g.options & OPTIONS_FORCE_ARM_OK) {
+    if (g.options & OPTIONS_FORCE_ARM_OK)
+    {
         arm_check_ok = true;
     }
-
 
     uint32_t now_ms = millis();
     uint32_t location_age_ms = now_ms - t.get_last_location_ms();
     uint32_t last_location_age_ms = now_ms - last_location_ms;
-    if (location_age_ms < last_location_age_ms) {
+    if (location_age_ms < last_location_age_ms)
+    {
         last_location_ms = t.get_last_location_ms();
     }
 }
 
 static uint8_t loop_counter = 0;
+extern "C" void remoteidinit(Parameters *default_table, ODID_UAS_Data *initialUasData, MAVLinkSerial *mavlink1, MAVLinkSerial *mavlink2)
+{
 
-
-extern "C" void openDriver() {
-
-    initArduino();
-     // disable brownout checking
-    WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0); //禁止监测供电电压
-    // Serial for debug printf
     Serial.begin(115200);
     SYS_LOG_INF("RemoteID initialization starts");
-    g.init();
-    
-    
-   
-   
-    // Serial1 for MAVLink
-    Serial1.begin(g.baudrate, SERIAL_8N1, PIN_UART_RX, PIN_UART_TX);
+    initArduino();
+    SYS_LOG_INF("initArduino");
+    // disable brownout checking
+    WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0); // 禁止监测供电电压
+                                               // Serial for debug printf
+    SYS_LOG_INF("WRITE_PERI_REG");
 
+    default_table->init();
+    SYS_LOG_INF("default_table->init");
+    // Serial1 for MAVLink
+    // Serial1.begin(g.baudrate, SERIAL_8N1, PIN_UART_RX, PIN_UART_TX);
     // set all fields to invalid/initial values
-    odid_initUasData(&UAS_data);
-    #if AP_MAVLINK_ENABLED
-    mavlink1.init();
-    mavlink2.init();
-    #endif
-    #if AP_DRONECAN_ENABLED
-    dronecan.init();
-    #endif
-    #if defined(PIN_CAN_EN)
+    // odid_initUasData(initialUasData);
+    // SYS_LOG_INF("odid_initUasData");
+#if AP_MAVLINK_ENABLED
+
+    mavlink1->init();
+    SYS_LOG_INF("mavlink1->init");
+    mavlink2->init();
+    SYS_LOG_INF("mavlinkw->init");
+#endif
+#if AP_DRONECAN_ENABLED
+    dronecan->init();
+#endif
+
+#if defined(PIN_CAN_EN)
     // optional CAN enable pin
     pinMode(PIN_CAN_EN, OUTPUT);
     digitalWrite(PIN_CAN_EN, HIGH);
@@ -278,114 +297,110 @@ extern "C" void openDriver() {
 #endif
 
 #if defined(BUZZER_PIN)
-    //set BuZZER OUTPUT ACTIVE, just to show it works
+    // set BuZZER OUTPUT ACTIVE, just to show it works
     pinMode(GPIO_NUM_39, OUTPUT);
     digitalWrite(GPIO_NUM_39, HIGH);
 #endif
 
-     pfst_check_ok = true;   // note - this will need to be expanded to better capture PFST test status
+    pfst_check_ok = true; // note - this will need to be expanded to better capture PFST test status
 
     esp_log_level_set("*", ESP_LOG_DEBUG);
-
+    SYS_LOG_INF("esp_log_level_set");
     esp_ota_mark_app_valid_cancel_rollback();
-
-
-
-
-    while(true){
-#if AP_MAVLINK_ENABLED
-    mavlink1.update();
-    mavlink2.update();
-#endif
-#if AP_DRONECAN_ENABLED
-    dronecan.update();
-#endif
-
-    const uint32_t now_ms = millis();
-
-    // the transports have common static data, so we can just use the
-    // first for status
-#if AP_MAVLINK_ENABLED
-    auto &transport = mavlink1;
-#elif AP_DRONECAN_ENABLED
-    auto &transport = dronecan;
-#else
-    #error "Must enable DroneCAN or MAVLink"
-#endif
-
-    bool have_location = false;
-    const uint32_t last_location_ms = transport.get_last_location_ms();
-    const uint32_t last_system_ms = transport.get_last_system_ms();
-
-
-    status_reason = "";
-
-     if (last_location_ms == 0 ||
-        now_ms - last_location_ms > 5000) {
-        UAS_data.Location.Status = ODID_STATUS_REMOTE_ID_SYSTEM_FAILURE;
-    }
-
-    if (last_system_ms == 0 ||
-        now_ms - last_system_ms > 5000) {
-        UAS_data.Location.Status = ODID_STATUS_REMOTE_ID_SYSTEM_FAILURE;
-    }
-
-    if (transport.get_parse_fail() != nullptr) {
-        UAS_data.Location.Status = ODID_STATUS_REMOTE_ID_SYSTEM_FAILURE;
-        status_reason = String(transport.get_parse_fail());
-    }
-
-      if (g.bcast_powerup) {
-        // if we are broadcasting on powerup we always mark location valid
-        // so the location with default data is sent
-        if (!UAS_data.LocationValid) {
-            UAS_data.Location.Status = ODID_STATUS_REMOTE_ID_SYSTEM_FAILURE;
-            UAS_data.LocationValid = 1;
-        }
-    } else {
-        // only broadcast if we have received a location at least once
-        if (last_location_ms == 0) {
-            delay(1);
-            return;
-        }
-    }
-
-    set_data(transport);
-
-    static uint32_t last_update_bt5_ms;
-    if (g.bt5_rate > 0 &&
-        now_ms - last_update_bt5_ms > 1000/g.bt5_rate) {
-        last_update_bt5_ms = now_ms;
-        ble.transmit_longrange(UAS_data);
-    }
-
-    static uint32_t last_update_bt4_ms;
-    int bt4_states = UAS_data.BasicIDValid[1] ? 7 : 6;
-    if (g.bt4_rate > 0 &&
-        now_ms - last_update_bt4_ms > (1000.0f/bt4_states)/g.bt4_rate) {
-        last_update_bt4_ms = now_ms;
-        ble.transmit_legacy(UAS_data);
-    }
-
-    // sleep for a bit for power saving
-    delay(1);
-
-
-    }
-
-   
-
-
-
-
+    SYS_LOG_INF("esp_ota_mark_app_valid_cancel_rollback");
 }
 
+extern "C" void openDriver()
+{
 
+    remoteidinit(&g, &UAS_data, &mavlink1, &mavlink2);
 
+    while (true)
+    {
+#if AP_MAVLINK_ENABLED
+        mavlink1.update();
+        mavlink2.update();
+#endif
+#if AP_DRONECAN_ENABLED
+        dronecan.update();
+#endif
 
+        const uint32_t now_ms = millis();
 
+        // the transports have common static data, so we can just use the
+        // first for status
+#if AP_MAVLINK_ENABLED
+        auto &transport = mavlink1;
+#elif AP_DRONECAN_ENABLED
+        auto &transport = dronecan;
+#else
+#error "Must enable DroneCAN or MAVLink"
+#endif
 
+        bool have_location = false;
+        const uint32_t last_location_ms = transport.get_last_location_ms();
+        const uint32_t last_system_ms = transport.get_last_system_ms();
 
+        status_reason = "";
 
+        if (last_location_ms == 0 ||
+            now_ms - last_location_ms > 5000)
+        {
+            UAS_data.Location.Status = ODID_STATUS_REMOTE_ID_SYSTEM_FAILURE;
+        }
 
+        if (last_system_ms == 0 ||
+            now_ms - last_system_ms > 5000)
+        {
+            UAS_data.Location.Status = ODID_STATUS_REMOTE_ID_SYSTEM_FAILURE;
+        }
 
+        if (transport.get_parse_fail() != nullptr)
+        {
+            UAS_data.Location.Status = ODID_STATUS_REMOTE_ID_SYSTEM_FAILURE;
+            status_reason = String(transport.get_parse_fail());
+        }
+
+        if (g.bcast_powerup)
+        {
+            // if we are broadcasting on powerup we always mark location valid
+            // so the location with default data is sent
+            if (!UAS_data.LocationValid)
+            {
+                UAS_data.Location.Status = ODID_STATUS_REMOTE_ID_SYSTEM_FAILURE;
+                UAS_data.LocationValid = 1;
+            }
+        }
+        else
+        {
+            // only broadcast if we have received a location at least once
+            if (last_location_ms == 0)
+            {
+                delay(1);
+                return;
+            }
+        }
+
+        set_data(transport);
+
+        static uint32_t last_update_bt5_ms;
+        if (g.bt5_rate > 0 &&
+            now_ms - last_update_bt5_ms > 1000 / g.bt5_rate)
+        {
+            last_update_bt5_ms = now_ms;
+            ble.transmit_longrange(UAS_data);
+        }
+
+        static uint32_t last_update_bt4_ms;
+        int bt4_states = UAS_data.BasicIDValid[1] ? 7 : 6;
+        if (g.bt4_rate > 0 &&
+            now_ms - last_update_bt4_ms > (1000.0f / bt4_states) / g.bt4_rate)
+        {
+            last_update_bt4_ms = now_ms;
+            ble.transmit_legacy(UAS_data);
+        }
+
+        // sleep for a bit for power saving
+        delay(1);
+    }
+}

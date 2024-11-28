@@ -82,9 +82,9 @@
 /home/shun/esp/remoteid/build/esp-idf/espressif__qrcode/libespressif__qrcode.a
 /home/shun/esp/remoteid/build/esp-idf/arduino-esp32-3.0.7/libarduino-esp32-3.0.7.a
 /home/shun/esp/remoteid/build/esp-idf/libcanard/liblibcanard.a
+/home/shun/esp/remoteid/build/esp-idf/system/libsystem.a
 /home/shun/esp/remoteid/build/esp-idf/libopendroneid/liblibopendroneid.a
 /home/shun/esp/remoteid/build/esp-idf/DroneCAN_generated/libDroneCAN_generated.a
 /home/shun/esp/remoteid/build/esp-idf/mavlink2/libmavlink2.a
 /home/shun/esp/remoteid/build/esp-idf/main/libmain.a
-/home/shun/esp/remoteid/build/esp-idf/system/libsystem.a
 /home/shun/esp/remoteid/build/esp-idf/opendriver/libopendriver.a
