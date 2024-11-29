@@ -263,10 +263,10 @@ extern "C" void remoteidinit(Parameters *default_table, ODID_UAS_Data *initialUa
     default_table->init();
     SYS_LOG_INF("default_table->init");
     // Serial1 for MAVLink
-    // Serial1.begin(g.baudrate, SERIAL_8N1, PIN_UART_RX, PIN_UART_TX);
-    // set all fields to invalid/initial values
-    // odid_initUasData(initialUasData);
-    // SYS_LOG_INF("odid_initUasData");
+    Serial1.begin(g.baudrate, SERIAL_8N1, PIN_UART_RX, PIN_UART_TX);
+    // set all fields to invalid / initial values
+    odid_initUasData(initialUasData);
+    SYS_LOG_INF("odid_initUasData");
 #if AP_MAVLINK_ENABLED
 
     mavlink1->init();
@@ -321,86 +321,86 @@ extern "C" void openDriver()
         mavlink1.update();
         mavlink2.update();
 #endif
-#if AP_DRONECAN_ENABLED
-        dronecan.update();
-#endif
+        // #if AP_DRONECAN_ENABLED
+        //         dronecan.update();
+        // #endif
 
-        const uint32_t now_ms = millis();
+        //         const uint32_t now_ms = millis();
 
-        // the transports have common static data, so we can just use the
-        // first for status
-#if AP_MAVLINK_ENABLED
-        auto &transport = mavlink1;
-#elif AP_DRONECAN_ENABLED
-        auto &transport = dronecan;
-#else
-#error "Must enable DroneCAN or MAVLink"
-#endif
+        //         // the transports have common static data, so we can just use the
+        //         // first for status
+        // #if AP_MAVLINK_ENABLED
+        //         auto &transport = mavlink1;
+        // #elif AP_DRONECAN_ENABLED
+        //         auto &transport = dronecan;
+        // #else
+        // #error "Must enable DroneCAN or MAVLink"
+        // #endif
 
-        bool have_location = false;
-        const uint32_t last_location_ms = transport.get_last_location_ms();
-        const uint32_t last_system_ms = transport.get_last_system_ms();
+        //         bool have_location = false;
+        //         const uint32_t last_location_ms = transport.get_last_location_ms();
+        //         const uint32_t last_system_ms = transport.get_last_system_ms();
 
-        status_reason = "";
+        //         status_reason = "";
 
-        if (last_location_ms == 0 ||
-            now_ms - last_location_ms > 5000)
-        {
-            UAS_data.Location.Status = ODID_STATUS_REMOTE_ID_SYSTEM_FAILURE;
-        }
+        //         if (last_location_ms == 0 ||
+        //             now_ms - last_location_ms > 5000)
+        //         {
+        //             UAS_data.Location.Status = ODID_STATUS_REMOTE_ID_SYSTEM_FAILURE;
+        //         }
 
-        if (last_system_ms == 0 ||
-            now_ms - last_system_ms > 5000)
-        {
-            UAS_data.Location.Status = ODID_STATUS_REMOTE_ID_SYSTEM_FAILURE;
-        }
+        //         if (last_system_ms == 0 ||
+        //             now_ms - last_system_ms > 5000)
+        //         {
+        //             UAS_data.Location.Status = ODID_STATUS_REMOTE_ID_SYSTEM_FAILURE;
+        //         }
 
-        if (transport.get_parse_fail() != nullptr)
-        {
-            UAS_data.Location.Status = ODID_STATUS_REMOTE_ID_SYSTEM_FAILURE;
-            status_reason = String(transport.get_parse_fail());
-        }
+        //         if (transport.get_parse_fail() != nullptr)
+        //         {
+        //             UAS_data.Location.Status = ODID_STATUS_REMOTE_ID_SYSTEM_FAILURE;
+        //             status_reason = String(transport.get_parse_fail());
+        //         }
 
-        if (g.bcast_powerup)
-        {
-            // if we are broadcasting on powerup we always mark location valid
-            // so the location with default data is sent
-            if (!UAS_data.LocationValid)
-            {
-                UAS_data.Location.Status = ODID_STATUS_REMOTE_ID_SYSTEM_FAILURE;
-                UAS_data.LocationValid = 1;
-            }
-        }
-        else
-        {
-            // only broadcast if we have received a location at least once
-            if (last_location_ms == 0)
-            {
-                delay(1);
-                return;
-            }
-        }
+        //         if (g.bcast_powerup)
+        //         {
+        //             // if we are broadcasting on powerup we always mark location valid
+        //             // so the location with default data is sent
+        //             if (!UAS_data.LocationValid)
+        //             {
+        //                 UAS_data.Location.Status = ODID_STATUS_REMOTE_ID_SYSTEM_FAILURE;
+        //                 UAS_data.LocationValid = 1;
+        //             }
+        //         }
+        //         else
+        //         {
+        //             // only broadcast if we have received a location at least once
+        //             if (last_location_ms == 0)
+        //             {
+        //                 delay(1);
+        //                 return;
+        //             }
+        //         }
 
-        set_data(transport);
+        //         set_data(transport);
 
-        static uint32_t last_update_bt5_ms;
-        if (g.bt5_rate > 0 &&
-            now_ms - last_update_bt5_ms > 1000 / g.bt5_rate)
-        {
-            last_update_bt5_ms = now_ms;
-            ble.transmit_longrange(UAS_data);
-        }
+        //         static uint32_t last_update_bt5_ms;
+        //         if (g.bt5_rate > 0 &&
+        //             now_ms - last_update_bt5_ms > 1000 / g.bt5_rate)
+        //         {
+        //             last_update_bt5_ms = now_ms;
+        //             ble.transmit_longrange(UAS_data);
+        //         }
 
-        static uint32_t last_update_bt4_ms;
-        int bt4_states = UAS_data.BasicIDValid[1] ? 7 : 6;
-        if (g.bt4_rate > 0 &&
-            now_ms - last_update_bt4_ms > (1000.0f / bt4_states) / g.bt4_rate)
-        {
-            last_update_bt4_ms = now_ms;
-            ble.transmit_legacy(UAS_data);
-        }
+        //         static uint32_t last_update_bt4_ms;
+        //         int bt4_states = UAS_data.BasicIDValid[1] ? 7 : 6;
+        //         if (g.bt4_rate > 0 &&
+        //             now_ms - last_update_bt4_ms > (1000.0f / bt4_states) / g.bt4_rate)
+        //         {
+        //             last_update_bt4_ms = now_ms;
+        //             ble.transmit_legacy(UAS_data);
+        //         }
 
-        // sleep for a bit for power saving
+        //         // sleep for a bit for power saving
         delay(1);
     }
 }

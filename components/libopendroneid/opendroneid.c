@@ -37,6 +37,7 @@ void odid_initBasicIDData(ODID_BasicID_data *data)
     if (!data)
         return;
     memset(data, 0, sizeof(ODID_BasicID_data));
+    SYS_LOG_INF("odid_initBasicIDData");
 }
 
 /**
@@ -55,6 +56,7 @@ void odid_initLocationData(ODID_Location_data *data)
     data->AltitudeBaro = INV_ALT;
     data->AltitudeGeo = INV_ALT;
     data->Height = INV_ALT;
+    SYS_LOG_INF("odid_initLocationData");
 }
 
 /**
@@ -66,7 +68,9 @@ void odid_initAuthData(ODID_Auth_data *data)
 {
     if (!data)
         return;
+       
     memset(data, 0, sizeof(ODID_Auth_data));
+    SYS_LOG_INF("odid_initAuthData");
 }
 
 /**
@@ -79,6 +83,7 @@ void odid_initSelfIDData(ODID_SelfID_data *data)
     if (!data)
         return;
     memset(data, 0, sizeof(ODID_SelfID_data));
+     SYS_LOG_INF("odid_initSelfIDData");
 }
 
 /**
@@ -96,6 +101,7 @@ void odid_initSystemData(ODID_System_data *data)
     data->AreaCeiling = INV_ALT;
     data->AreaFloor = INV_ALT;
     data->OperatorAltitudeGeo = INV_ALT;
+    SYS_LOG_INF("odid_initSystemData");
 }
 
 /**
@@ -109,6 +115,7 @@ void odid_initOperatorIDData(ODID_OperatorID_data *data)
     if (!data)
         return;
     memset(data, 0, sizeof(ODID_OperatorID_data));
+    SYS_LOG_INF("odid_initOperatorIDData");
 }
 
 /**
@@ -138,24 +145,22 @@ void odid_initUasData(ODID_UAS_Data *data)
     for (int i = 0; i < ODID_BASIC_ID_MAX_MESSAGES; i++) {
         data->BasicIDValid[i] = 0;
         odid_initBasicIDData(&data->BasicID[i]);
-         SYS_LOG_INF("odid_initBasicIDData");
     }
     data->LocationValid = 0;
     odid_initLocationData(&data->Location);
     for (int i = 0; i < ODID_AUTH_MAX_PAGES; i++) {
         data->AuthValid[i] = 0;
         odid_initAuthData(&data->Auth[i]);
-          SYS_LOG_INF("odid_initAuthData");
+       
     }
     data->SelfIDValid = 0;
     odid_initSelfIDData(&data->SelfID);
-     SYS_LOG_INF("odid_initSelfIDData");
+    
     data->SystemValid = 0;
     odid_initSystemData(&data->System);
-      SYS_LOG_INF("odid_initSystemData");
     data->OperatorIDValid = 0;
     odid_initOperatorIDData(&data->OperatorID);
-     SYS_LOG_INF("odid_initOperatorIDData");
+     
 }
 
 /**

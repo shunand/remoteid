@@ -83,7 +83,7 @@ int16_t Parameters::param_index_float(const Parameters::Param *f)
         }
     switch (p.ptype) {
         case ParamType::UINT8:
-             case ParamType::INT8:
+         case ParamType::INT8:
         case ParamType::UINT32:
         case ParamType::FLOAT:
             if (&p == f) {
@@ -252,16 +252,20 @@ bool Parameters::Param::get_as_float(float &v) const
 {
     switch (ptype) {
         case ParamType::UINT8:
-            v = float(get_uint8());
+          v = float(get_uint8());
+          SYS_LOG_INF("v: %.2f", v);  
             break;
                case ParamType::INT8:
+            SYS_LOG_INF("v: %.2f", v);  
             v = float(get_int8());
             break;
         case ParamType::UINT32:
             v = float(get_uint32());
+             SYS_LOG_INF("v: %.2f", v);
             break;
         case ParamType::FLOAT:
             v = get_float();
+            SYS_LOG_INF("v: %.2f", v);  
             break;
     default:
         return false;

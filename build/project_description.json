@@ -1,7 +1,7 @@
 {
     "version":            "1.1",
     "project_name":       "project",
-    "project_version":    "431aeb2-dirty",
+    "project_version":    "d07bf27-dirty",
     "project_path":       "/home/shun/esp/remoteid",
     "idf_path":           "/home/shun/esp/esp-idf",
     "build_dir":          "/home/shun/esp/remoteid/build",

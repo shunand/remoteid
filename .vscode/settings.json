@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "*.tcc": "cpp",
-        "opendroneid.h": "c"
+        "opendroneid.h": "c",
+        "bitset": "cpp",
+        "set": "cpp"
     }
 }
